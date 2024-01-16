@@ -11,6 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+<script defer src="./main.js"></script>
 </head>
 
     <nav class="nav-bar">
@@ -28,7 +29,7 @@
                 <a class="nav-text" href="#tecnologies">Tecnologias</a>                
             </li>
             <li class="nav-item nav-text">
-                <a class="nav-text" href="#socials">Socials</a>                
+                <a class="nav-text" bc bcxººhref="#socials">Socials</a>                
             </li>
             <button class="btn-nav">
                 <a class="nav-text" href="#contact">Contactame</a>                
@@ -49,13 +50,20 @@
                 <div class="profile_description">   
                      <dt class="profile-name">
                     Daniel Santoyo
-                </dt>
+                     </dt>
             
-              
-                <dd class="description">
+               
+                    <dd class="description">
                     Soy <span>Desarrollador</span> de proyectos para <span >Frontend</span>  y  <span > Backend, </span>  desde su conceptualización hasta su construcción.
-                </dd>
-                <a class="btn_rsm" href="../mi Portafolio/assets/documents/HOJA DE VIDA.pdf" download="CV DANIEL SANTOYO"> <i class='bx bxs-user-pin'></i><span class="resume_button">Resume</span></a> 
+                    </dd>
+
+                    <div class="button_hv" >
+                        <a class="btn_rsm" href="../mi Portafolio/assets/documents/HOJA DE VIDA.pdf" download="CV DANIEL SANTOYO"> <i class='bx bxs-user-pin'></i><span class="resume_button">Resume</span></a>
+
+                        <a class="btn_linkedin" href="https://www.linkedin.com/in/daniel-santoyo-599b82149/" target="_blank"><i class='bx bxl-linkedin'></i><span class="resume_button"></span></a>
+
+                    </div>
+                     
 
                 </div>
              
@@ -74,6 +82,9 @@
 
         <section id="experience" class="experience">
 
+            
+         <article class="container_experience">
+            
             <div class="title">
                 <dt >Experiencia <span class="icon"><i class='bx bxs-briefcase-alt-2'></i></span>  </dt>
             </div>
@@ -101,19 +112,26 @@
     
     
                  </article>
+
+         </article>
+        
     </section>
            
        
     <section class="proyects">
+        <article class="container_proyects">
 
-        <dt class="title">Proyectos <span class="icon"> <i class='bx bx-star' ></i> </span>  </dt>
-            <section id="proyects" class="container-proyects">              
-                <article class="card one">
+        
+        <div class="title">
+            <dt >Proyectos <span class="icon"> <i class='bx bx-star' ></i> </span>  </dt>
+        </div>
+        
+            <section id="proyects" class="container-cards"> 
+
+                <article class="card one hidden">
                     <article >
-                        <img class="img-proy" src="./assets/images/cookie.jpg" alt="">           
-                            <dt class="title-proy"> Cookie Fourtune</dt>
-                            <section class="btns">
-                            </section>                   
+                           <img class="img-proy" src="./assets/images/cookie.jpg" alt="">           
+                            <dt class="title-proy">Cookie Fortune</dt>                                           
                      </article>          
         
                      <article class="superior-card">
@@ -121,70 +139,87 @@
                         <dd class="desc-proy">Creacion de aplicacion para generar galletas aleatorias de la fortuna con react</dd> 
                         
                         <div class="buttons">
-                            <button class="site"> <a href="https://fortunecookiereact.netlify.app" target="_blank">Site</a>
+                            <button class="site"> <a href="https://fortunecookiereact.netlify.app" target="_blank"><i class='bx bx-home-alt-2' ></i>Site</a>
                                 
                             </button>
                 
                             <button class="git">
-                                <a href="https://github.com/daftboston/React-p1" target="_blank">gitHub</a>
+                                <a href="https://github.com/daftboston/React-p1" target="_blank"> <i class='bx bx-link' ></i> gitHub</a>
                             </button>
                         </div>               
                      </article>
-                </article>
-    
-               
+                </article>           
                
         
                 
-                <article class="card two">
-                    <img class="img-proy" src="./assets/images/rick.jpg" alt="">           
-                        <dt class="title-proy"> PROYECTO</dt>
-                        <dd class="desc-proy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias voluptates provident nisi. Eius aperiam minima, obcaecati dignissimos a assumenda nam.</dd>  
-        
-                        <section class="btns">
-                            <button class="site">
-                                sitio
-                            </button>
-            
-                            <button class="git">
-                                gitHub
-                            </button>
-                        </section>          
+                <article class="card two hidden">
+                    <article>
+                        <img class="img-proy" src="./assets/images/rick.jpg" alt="">           
+                        <dt class="title-proy"> Rick and Morthy-Characters</dt>                  
+                    </article>
+                    
+                    <article class="superior-card">
+                        <dt> Rick and Morthy-Characters</dt>
+                        <dd class="desc-proy">Creacion de aplicacion para filtrar personajes según su universo</dd> 
                         
+                        <div class="buttons">
+                            <button class="site"> <a href="https://dsp-rickandmorty.netlify.app/" target="_blank"><i class='bx bx-home-alt-2' ></i>Site</a>
+                                
+                            </button>
+                
+                            <button class="git">
+                                <a href="https://github.com/daftboston/p3-r" target="_blank"> <i class='bx bx-link' ></i> gitHub</a>
+                            </button>
+                        </div>               
+                     </article>
+               </article>
+        
+                <article class="card three hidden">
+                    <article>
+                         <img class="img-proy" src="./assets/images/todo.jpg" alt="">           
+                         <dt class="title-proy"> Product Form</dt>
+                    </article>
+                    <article class="superior-card">
+                        <dt> Product Form</dt>
+                        <dd class="desc-proy">Creacion de aplicacion para adicionar productos  y editarlos.</dd> 
+                        
+                        <div class="buttons">
+                            <button class="site"> <a href="https://majestic-alpaca-ee1405.netlify.app/" target="_blank"><i class='bx bx-home-alt-2' ></i>Site</a>
+                                
+                            </button>
+                
+                            <button class="git">
+                                <a href="https://github.com/daftboston/P4-CRUD" target="_blank"> <i class='bx bx-link' ></i> gitHub</a>
+                            </button>
+                        </div>               
+                     </article>        
                 </article>
         
-                <article class="card three">
-                    <img class="img-proy" src="./assets/images/todo.jpg" alt="">           
-                        <dt class="title-proy"> PROYECTO</dt>
-                        <dd class="desc-proy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias voluptates provident nisi. Eius aperiam minima, obcaecati dignissimos a assumenda nam.</dd>  
-        
-                        <section class="btns">
-                            <button class="site">
-                                sitio
+                <article class="card four hidden">
+                    <article>
+                        <img class="img-proy" src="./assets/images/ecomerce.jpg" alt="">           
+                        <dt class="title-proy">Ecommerce</dt>                        
+                    </article>
+
+                    <article class="superior-card">
+                        <dt> Ecommerce</dt>
+                        <dd class="desc-proy">Creacion de ecommerce de productos electronicos con seccion de Login, Carrito de compras y detalle de productos.</dd> 
+                        
+                        <div class="buttons">
+                            <button class="site"> <a href="https://dsp-ecommercereact.netlify.app/" target="_blank"><i class='bx bx-home-alt-2' ></i>Site</a>
+                                
                             </button>
-            
+                
                             <button class="git">
-                                gitHub
+                                <a href="https://github.com/daftboston/e-comerce" target="_blank"> <i class='bx bx-link' ></i> gitHub</a>
                             </button>
-                        </section>               
-                </article>
-        
-                <article class="card four">
-                    <img class="img-proy" src="./assets/images/ecomerce.jpg" alt="">           
-                        <dt class="title-proy"> PROYECTO</dt>
-                        <dd class="desc-proy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias voluptates provident nisi. Eius aperiam minima, obcaecati dignissimos a assumenda nam.</dd>  
-        
-                        <section class="btns">
-                            <button class="site">
-                                sitio
-                            </button>
-            
-                            <button class="git">
-                                gitHub
-                            </button>
-                        </section>                
-                  </article>
+                        </div>               
+                     </article>      
+                                   
+                 </article>
             </section>
+
+        </article>
 
     </section>    
         
@@ -198,8 +233,17 @@
     
        
     
-        <section id="contact">
-            <dt class="title"> Contacto </dt>
+        <section id="contact" class="form">
+            <dt class="title"> Contactame </dt>
+
+            <form  class="form_container">
+                <input type="text" placeholder="Ingresa tu nombre" name="nameUser" id="nameUser" required>
+                <input type="text" placeholder="Ingresa tu correo" name="emailUser" id="emailUser" required>
+                <textarea name="commentUser" id="commentUser" placeholder="Escribeme" cols="30" rows="10"></textarea>
+                <button class="btn-nav">Enviar</button>
+            </form>
+         
+
         </section>
     </main>
 

@@ -12,6 +12,7 @@
     --card--text-bottom: rgb(225, 222, 222);
     --icon--inside-button: rgb(3, 44, 205);
     --buttom--pricipal: rgb(70, 133, 241);
+    --green: rgb(0, 183, 255);
     --button--secondary: rgb(85, 85, 85);
     --text--dark:rgb(39, 39, 39);
     
@@ -75,8 +76,7 @@ img{
 
 a{
     text-decoration: none;
-    color: aliceblue;  
-    
+    color: aliceblue;      
 }
 
 a:hover{
@@ -94,30 +94,44 @@ a:hover{
 
 
 .btn-nav{
-    padding: 5px;
-    width: 6rem;
+    padding: 5px 9px;  
     border-radius: 2px;
     background-color:var(--buttom--pricipal);
     color: antiquewhite;
     border: none;    
+    
+}
+
+.button_hv{
+    height: 2rem;
+
 }
 
 .btn_rsm {
-  padding: 5px;
-  width: 6rem;
+  padding: 5px;    
   border-radius: 5px;
-  background-color: var(--buttom--pricipal);
+  background-color: var(--green);
+  font-size: 0.8rem;  
+  bottom: -2px;
   }
-.resume_button{
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
+
+
+.btn_linkedin{
+    padding: 4px;
+    border-radius: 5px;
+    background-color: var(--buttom--pricipal);
+    font-size: 0.9rem;
+    
+
 }
+
+
 
 .btn_rsm i{
     margin-left: 0.2rem;
     font-size: 0.9rem;
     position: relative;
-    bottom: -3px;
+    bottom: -2px;
     color: var(--main-bg-color);
 
     
@@ -127,6 +141,7 @@ a:hover{
 /*HEADER*/
 
 header{    
+    margin-top: 5rem;
     min-height: 50vh;
     display: flex;
     justify-content: center;
@@ -185,13 +200,13 @@ header{
     
 }
 .description span{
-    color: var(--navbar-bg);
+    color: var(--buttom--pricipal);
     font-size: 0.8rem;
     font-weight: 700;
 }
 
 
-/*TITLEs*/
+/*TITLES*/
 
 .title{
     padding-top: 3rem;   
@@ -218,10 +233,17 @@ header{
 /*EXPERIENCE*/
 
 .experience {
+    margin-top: 4rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
     align-items: center;
-    justify-content:flex-start;
+    max-width: 100%;
+}
+
+.container_experience{
+    display: flex;   
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 
@@ -263,27 +285,27 @@ header{
 /*PROYECTS*/
 
 .proyects{
-    display: flex; 
-    flex-direction: column;  
-    align-items: center;
-    justify-content:flex-start;
-}
-
-.container-proyects{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column;    
     align-items: center;
-    flex-wrap: wrap;   
-    padding-top: 3rem;    
-    width: 100vw;   
-    justify-content: space-around;   
-
-  
+   
 }
+
+
+    
+
+
+   
+    
+   
+
+
+
 
 /*CARD*/
+
 .card{
+    
     overflow: hidden;
     margin: 2rem;
     position:relative;   
@@ -292,19 +314,15 @@ header{
     width:320px;
     height: 220px;
     flex-direction: column;
-    border-radius: 10px;
-    justify-content:space-around;
-    align-items: center;
-    background-color:var(--main-bg-color);
-    
+    border-radius: 10px;     
+    background-color:var(--main-bg-color);    
 }
 
 .superior-card{
     position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: center;   
-     
+    align-items: center;        
     width:320px;
     height: 220px;
     border-radius: 10px;
@@ -313,17 +331,17 @@ header{
     backdrop-filter: blur(5px);   
     color: white;  
     justify-content:space-around;
+    padding: 1rem;
     right: -100%;
     transition: all 0.2s cubic-bezier(0.4, 0, 1, 1) 0.03s;
-    
-     
+   
 
 }
 
 .superior-card button{
     background-color: rgb(127, 136, 185) ;
     color: rgb(205, 218, 240);
-    width: 6rem;
+    width: 5rem;
     height: 1.8rem;
     border: none;
     border-radius: 3px;
@@ -339,7 +357,8 @@ header{
 
 
 .img-proy{
-    height: 12rem;
+
+    height: 10rem;
     width: 20rem;
     object-fit: cover;
     
@@ -347,11 +366,15 @@ header{
 
 .title-proy{
     font-weight: 700;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 .desc-proy{
+    width: 12rem;
     padding: 0.2rem 1rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.5rem;
 }
@@ -361,6 +384,63 @@ header{
     font-size: 1.5rem;
     font-weight: 100;
 }
+
+.hidden{
+    opacity: 0;
+    transform: translateX(-200px) ;
+    transition: opacity 1s,  transform 0.3s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/*FORM*/
+
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+   max-width: 80%;
+   align-items: center;
+   margin: auto;
+    }
+
+.form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;     
+}
+
+.form_container * {
+    padding: 0.6rem;
+    outline: none;
+    border-color: var(--card--text-bottom);
+    border-radius: 0.5rem;   
+    border: 2px solid var(--card--text-bottom);
+    transition: border 0.7s;
+
+}
+
+.form input:focus,
+.form textarea:focus
+{
+    border: 2px solid var(--green)
+}
+
+
+/*Se aplican los estilos cuando haya minimo 800px*/
+@media (min-width: 800px) {
+    body{
+        background-color: rgb(229, 229, 248);
+    }
+}
+
+
+
+
 
 
 
