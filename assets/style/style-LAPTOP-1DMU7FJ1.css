@@ -12,12 +12,9 @@
     --card--text-bottom: rgb(225, 222, 222);
     --icon--inside-button: rgb(3, 44, 205);
     --buttom--pricipal: rgb(70, 133, 241);
-    --clear--green: rgba(0, 183, 255, 0.707) ;
     --green: rgb(0, 183, 255);
     --button--secondary: rgb(85, 85, 85);
     --text--dark:rgb(39, 39, 39);
-    --z-navbar: 5000;
-    --z-icon-menu: 4000
     
 
 }
@@ -44,9 +41,6 @@ img{
 
 /*NAV BAR*/
 
-
-
-
 .nav-bar{
     display: flex;
     align-items: center;
@@ -58,7 +52,7 @@ img{
     left: 0;   
     position: fixed;
     top: 0;  
-    z-index:var(--z-navbar);  
+    z-index: 50;  
 }
 
 .name{
@@ -73,23 +67,9 @@ img{
     font-size: 0.8rem;
     list-style: none;
     align-items: center;  
-    padding-right: 1.5vw;      
+    padding-right: 1.5vw;  
+    
 }
-
-
-.iconShowMenu {
-    position: fixed;
-    top: 0.5rem;   
-    height: 2rem;   
-    right: 3rem;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: var(--z-icon-menu);
-    visibility: hidden;   
-}
-
-
-
 
 a{
     text-decoration: none;
@@ -106,11 +86,9 @@ a{
 
 .link--active{
     background-color: var(--buttom--pricipal);
-    padding: 0.2rem 0.7rem;
-    border-radius: 5px;
 }
 
-.link>a:hover{
+a:hover{
     color: rgb(180, 230, 253);  
 }
 
@@ -122,15 +100,8 @@ a{
     transition: text-shadow 0.2s;
 }
 
-.btn-nav{
-    border: dashed ;
-    
-    padding: 0.2rem 0.7rem;
-    border-radius: 5px;
-    
-}
 
-/**/
+
 
 
 .button_hv{
@@ -141,31 +112,20 @@ a{
 .btn_rsm {
   padding: 5px;    
   border-radius: 5px;
-  background-color: var(--clear--green);
+  background-color: var(--green);
   font-size: 0.8rem;  
   bottom: -2px;
-  transition: 0.3s;
   }
 
-.btn_rsm:hover {
-    padding: 6px;
-    box-shadow: rgba(128, 128, 128, 0.59) 1px 1px 3px;
-    background-color: var(--green);
-  }
 
 .btn_linkedin{
     padding: 4px;
     border-radius: 5px;
     background-color: var(--buttom--pricipal);
     font-size: 0.9rem;
-    transition: 0.3s;
+    
+
 }
-
-
-.btn_linkedin:hover {
-    padding: 5px;
-    box-shadow: rgba(128, 128, 128, 0.59) 1px 1px 3px;
-  }
 
 
 
@@ -178,60 +138,32 @@ a{
 }
 
 
-/*HEADER - PROFILE */
+/*HEADER*/
 
 header{    
-    margin-top: 1rem;
-    height: 90vh;
+    margin-top: 5rem;
+    min-height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.profile{    
+.profile{
+    margin-top: 3rem;
     display: flex;
     flex-direction: row;   
     align-items: center;
     gap: 1rem;
-    max-width:100%;  
-    height: 40vh;    
+    max-width:100%;
+    padding: 1rem;
+    height: 30vh;    
 }
 
 .profile_description {
     display: flex;
-    width: auto;
     flex-direction: column;
     gap: 1rem;
-}
-
-@media (max-width: 800px) {
-    .nav-menu{
-        background-color: var(--clear--green);
-        box-shadow: -3px 5px 8px rgba(128, 128, 128, 0.785);
-        position: fixed;
-        top: 3rem;
-        right: 0;
-        height: 100vh;
-        width: 30vw;
-        flex-direction: column;
-        justify-content: center;
-        transform: translateX(100%);
-        transition: transform 0.5s;
-    }
-    .nav-menu-show{
-        transform: translateX(0);
-    }
-  .iconShowMenu {
-   visibility: visible;
-  }  
-
-  .profile{
-    flex-direction: column;    
-  }
-  .profile_description{
-    align-items: center;
- }
 }
 
 
@@ -244,9 +176,9 @@ header{
     background: linear-gradient(140deg, rgb(248, 252, 255) 50%, rgb(149, 151, 151) 100%);
     
 /*asegurar la proporcion de la imagen*/
-   object-fit: cover;  
+   object-fit: cover;
+  
 }
-
 .profile-img{
     width: 100%;  
     
@@ -274,47 +206,6 @@ header{
 }
 
 
-
-
-/*TECNOLOGIES*/
-
-.tecnologies{
- display: flex;
- justify-content: center;
- align-items: center;
- height: 6rem;
- width: 11rem;
-
- gap: 3rem;
-}
-
-.tecnologies > img {
-    object-fit: cover;
-    height: 2rem;
- 
-    transition: 0.5s;
-}
-
-.tecnologies > img:hover {
-     height: 2.8rem;   
-    
-}
-
-.tecnologies > img:hover:nth-child(2) {
-    height: 2.8rem;   
-    animation-name: spin;
-    animation-duration: 3500ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear; 
-   
-}
-
-
-
-
-
-
-
 /*TITLES*/
 
 .title{
@@ -335,7 +226,7 @@ header{
 }
 
 
-
+/*PROFILE*/
 
 
 
@@ -347,7 +238,6 @@ header{
     flex-direction: column;    
     align-items: center;
     max-width: 100%;
-    height: 90vh;
 }
 
 .container_experience{
@@ -355,6 +245,7 @@ header{
     flex-direction: column;
     align-items: flex-start;
 }
+
 
 
 .description-experience{
@@ -397,9 +288,15 @@ header{
     display: flex;
     flex-direction: column;    
     align-items: center;
-    padding-top: 3rem;
    
-} 
+}
+
+
+    
+
+
+   
+    
    
 
 
@@ -505,8 +402,7 @@ header{
    max-width: 80%;
    align-items: center;
    margin: auto;
-   padding: 6rem 3rem;
-   height: 90vh;
+   padding-bottom: 3rem;
     }
 
 .form_container {
@@ -533,12 +429,11 @@ header{
 
 
 /*Se aplican los estilos cuando haya minimo 800px*/
-@media (min-width: 1000px) {
+@media (min-width: 800px) {
     body{
-        background-color: rgb(20, 20, 21);
+        background-color: rgb(229, 229, 248);
     }
 }
-
 
 
 
