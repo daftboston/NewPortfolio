@@ -32,18 +32,13 @@ body.darkTheme{
 .container_principal{
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0  13rem;
+    padding: 0  1rem;
 }
-
 
 body{
     background-color:  var(--main-bg-color);
     color: var(--text);
 }
-
-
-
-
 
 img{
     display: block;
@@ -187,14 +182,13 @@ header{
     display: flex;
     flex-direction: row;   
     align-items: center;
-    gap: 1rem;
-   
+    gap: 1rem;   
     height: 40vh;    
 }
 
 .profile_description {
     display: flex;
-    width: auto;
+    max-width: 90vw;
     flex-direction: column;
     gap: 1rem;
 }
@@ -221,6 +215,7 @@ header{
   }  
   .profile{
     flex-direction: column;    
+    align-items: center;
   }
   .profile_description{
     align-items: center;
@@ -246,8 +241,7 @@ header{
     font-weight: 700; 
 }
 
-.description{    
-    width: 25rem;
+.description{  
     line-height: 1.5rem;
     font-size: 0.8rem;
     color: var(--text);    
@@ -266,7 +260,6 @@ header{
  justify-content: center;
  align-items: center;
  height: 6rem;
- width: 11rem;
  gap: 3rem;
 }
 
@@ -315,6 +308,7 @@ header{
     align-items: center;  
     height: 90vh;
     padding: 0 0.5rem;
+    
 }
 
 .container_experience{
@@ -361,9 +355,24 @@ header{
 .proyects{
     display: flex;
     flex-direction: column;    
-    align-items: center;
     padding-top: 3rem;   
+    padding: 2rem 0.5rem;
+    margin: 0 auto;
+    max-width:  800px;
+    
 } 
+
+.proyects .title {
+   padding-bottom: 3rem;
+    
+}
+
+.container_proyects{
+    display: flex;   
+    flex-direction: column;
+    align-items: center;
+    
+}
 
 /*CARD*/
 
@@ -417,7 +426,7 @@ header{
 .img-proy{
 
     height: 10rem;
-    width: 20rem;
+    width: 15rem;
     object-fit: cover;    
 }
 
@@ -429,7 +438,7 @@ header{
 }
 
 .desc-proy{
-    width: 12rem;
+ 
     padding: 0.2rem 1rem;
     font-size: 0.8rem;
     font-weight: 400;
