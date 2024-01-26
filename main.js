@@ -1,5 +1,6 @@
 
 // rastreador para movimiento  en interseccion 
+
 const hiddenElements = document.querySelectorAll(".hidden")
 
 const observer = new IntersectionObserver((entries) => {entries.forEach((entry)=>{
@@ -8,8 +9,9 @@ const observer = new IntersectionObserver((entries) => {entries.forEach((entry)=
     }else{
     entry.target.classList.remove("show")
       }
+      console.log(entries);
 })
-},{threshold: 0.9,})
+},{threshold: 0.2,})
 
 hiddenElements.forEach((element) => observer.observe(element))
 

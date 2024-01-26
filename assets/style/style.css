@@ -20,13 +20,13 @@
     --z-icon-menu: 4000  
 }
 
-/*reseteo de variables de colores para el darktheme*/
+/*reseteo de variables de colores para el darktheme
 
 body.darkTheme{   
     --main-bg-color: rgb(5, 1, 16);
     --text--darkTheme:rgb(165, 161, 161);   
 }
-
+*/
 /*BODY*/
 
 .container_principal{
@@ -156,8 +156,6 @@ a{
     padding: 5px;
     box-shadow: rgba(128, 128, 128, 0.59) 1px 1px 3px;
   }
-
-
 
 .btn_rsm i{
     margin-left: 0.2rem;
@@ -378,13 +376,12 @@ header{
 
 .card{    
     overflow: hidden;
-    margin: 2rem;
-    position:relative;   
-    display: flex;
-    right: 0;
-    width:320px;
-    height: 220px;
+    margin: 2rem;    
+    display: flex;    
+    width: 320px;
+    height: 240px;
     flex-direction: column;
+    align-items: center;
     border-radius: 10px;     
     background-color:var(--main-bg-color);    
 }
@@ -424,9 +421,8 @@ header{
 }
 
 .img-proy{
-
     height: 10rem;
-    width: 15rem;
+    width: 320px;
     object-fit: cover;    
 }
 
