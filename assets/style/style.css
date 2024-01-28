@@ -9,7 +9,7 @@
 
 :root{
    
-    --main-bg-color:rgb(56, 55, 55);
+    --main-bg-color:rgb(14, 7, 21);
     --navbar-bg: rgba(0, 0, 0, 0.877);
     --text:rgb(241, 238, 238);
     --card--text-bottom: rgb(225, 222, 222);
@@ -51,9 +51,9 @@ body.clearTheme{
     display: flex;
     position: fixed;
     top: 3.5rem;
-    left: 1rem;
+    left: 0.6rem;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.3rem;
 }
 
 .switch {
@@ -61,7 +61,7 @@ body.clearTheme{
     top: 0;
     left: 0;
     display: inline-block;
-    width: 40px;
+    width: 32px;
     height: 15px;
   }
   
@@ -98,7 +98,7 @@ body.clearTheme{
   }
   
   input:checked + .slider {
-    background-color: #39a0f4;
+    background-color: #58b2fb;
   }
   
   input:focus + .slider {
@@ -106,9 +106,9 @@ body.clearTheme{
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(17px);
   }
   
   /* Rounded sliders */
@@ -181,10 +181,6 @@ img{
     z-index: var(--z-icon-menu);
     visibility: hidden;   
 }
-
-
-
-
 
 a{
     text-decoration: none;
@@ -261,7 +257,7 @@ a{
     font-size: 0.9rem;
     position: relative;
     bottom: -2px;
-    color: var(--main-bg-color);    
+        
 }
 
 /*HEADER - PROFILE */
@@ -372,6 +368,14 @@ header{
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
+
+.tecnologies > :nth-child(3){
+    border-radius: 3px;
+
+  background-color: rgba(251, 250, 255, 0.798) ;
+  box-shadow: 0px 0px 12px rgb(240, 238, 245);
+}
+  
 
 .tecnologies > img:hover {
      height: 2.8rem;       
