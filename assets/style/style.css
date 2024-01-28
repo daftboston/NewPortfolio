@@ -5,28 +5,49 @@
     font-family: 'Lato', sans-serif;    
 }
 
+
+
 :root{
-    --main-bg-color:rgb(249, 242, 242);
+   
+    --main-bg-color:rgb(56, 55, 55);
     --navbar-bg: rgba(0, 0, 0, 0.877);
-    --text:rgb(70, 69, 69);
+    --text:rgb(241, 238, 238);
     --card--text-bottom: rgb(225, 222, 222);
     --icon--inside-button: rgb(3, 44, 205);
     --buttom--pricipal: rgb(70, 133, 241);
     --clear--green: rgba(0, 183, 255, 0.707) ;
     --green: rgb(0, 183, 255);
     --button--secondary: rgb(85, 85, 85);
-    --text--dark:rgb(39, 39, 39);
+    --text--dark:rgb(222, 218, 218);
     --z-navbar: 5000;
     --z-icon-menu: 4000  
 }
 
-/*reseteo de variables de colores para el darktheme
-
-body.darkTheme{   
-    --main-bg-color: rgb(5, 1, 16);
-    --text--darkTheme:rgb(165, 161, 161);   
+/*reseteo de variables de colores para el darktheme */
+body.clearTheme{   
+    transition: 0.6s;
+    --main-bg-color: rgb(240, 238, 245);
+    --text:rgb(34, 34, 34);   
 }
-*/
+
+.bxs-sun{
+    color: rgb(255, 174, 0);
+    font-size: 1.6rem;
+}
+.sunOn {
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    
+   
+}
+
+.moonOn {
+    transition: 0.5s;
+    color:  rgb(255, 179, 0);
+    font-size: 1.2rem;
+}
+
+
 /*BODY*/
 
 .container_principal{
@@ -36,6 +57,7 @@ body.darkTheme{
 }
 
 body{
+    transition: 0.6s;
     background-color:  var(--main-bg-color);
     color: var(--text);
 }
@@ -86,6 +108,81 @@ img{
     z-index: var(--z-icon-menu);
     visibility: hidden;   
 }
+
+.darkmodeContainer{
+    display: flex;
+    position: fixed;
+    top: 3.5rem;
+    left: 1.5rem;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.switch {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 48px;
+    height: 23px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #39a0f4;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
 
 a{
     text-decoration: none;
@@ -267,6 +364,13 @@ header{
     transition: 0.5s;
 }
 
+.tecnologies > :nth-child(2){
+    animation-name: spin;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
 .tecnologies > img:hover {
      height: 2.8rem;       
 }
@@ -284,7 +388,7 @@ header{
 .title{
     padding-top: 3rem;   
     padding-bottom: 1rem;
-    color: rgb(102, 102, 102);
+    color: var(--text);
     font-size: 1.7rem;
     font-weight: 700; 
 }
@@ -346,6 +450,7 @@ header{
     font-size: 0.9rem;
     line-height: 1rem;
     margin-bottom: 1.5rem;
+    color: var(--text);
 }
 
 /*PROYECTS*/

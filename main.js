@@ -9,7 +9,7 @@ const observer = new IntersectionObserver((entries) => {entries.forEach((entry)=
     }else{
     entry.target.classList.remove("show")
       }
-      console.log(entries);
+      //console.log(entries);
 })
 },{threshold: 0.2,})
 
@@ -60,12 +60,28 @@ sectionElement.forEach((element)=>observer2.observe(element))
 
 //Selecciona la clase del icono menu y lo guarda en una variable
 const iconShowMenu = document.querySelector(".iconShowMenu")
-console.log(iconShowMenu);
+
 const navBarMenu = document.querySelector(".nav-menu")
 
 //Escucha cuando le da click
 iconShowMenu.addEventListener('click', ()=>{
     navBarMenu.classList.toggle("nav-menu-show")
+})
+
+
+//DarkMode
+
+const onOffSwitch= document.querySelector(".onOffSwitch")
+
+const moon = document.querySelector(".bxs-moon")
+const sun = document.querySelector(".bxs-sun")
+
+
+onOffSwitch.addEventListener("click", ()=>{
+    document.body.classList.toggle("clearTheme"),
+    moon.classList.toggle("moonOn"),
+    sun.classList.toggle("sunOn")
+
 })
 
 
