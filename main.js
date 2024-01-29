@@ -23,7 +23,7 @@ const sectionElement = document.querySelectorAll(".seccion")
 
 // selecciona cada link de la nav bar
 const links = document.querySelectorAll(".nav-text")
-//console.log(links);
+console.log(links);
 
 
 const observer2 = new IntersectionObserver((entries)=>{
@@ -67,6 +67,13 @@ const navBarMenu = document.querySelector(".nav-menu")
 iconShowMenu.addEventListener('click', ()=>{
     navBarMenu.classList.toggle("nav-menu-show")
 })
+
+links.forEach((link)=>{link.addEventListener('click', ()=>{
+    navBarMenu.classList.toggle("nav-menu-show")
+})})
+
+
+
 
 
 //DarkMode
