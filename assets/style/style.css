@@ -373,7 +373,7 @@ header{
 .tecnologies > :nth-child(3){
     border-radius: 3px;
 
-  background-color: rgba(251, 250, 255, 0.798) ;
+  background-color:  rgba(240, 238, 245, 0.79);
   box-shadow: 0px 0px 12px rgb(240, 238, 245);
 }
   
