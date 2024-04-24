@@ -5,9 +5,12 @@
 const eng = document.querySelectorAll('.eng')
 const esp = document.querySelectorAll('.esp')
 const balllang = document.querySelector('.ball-lang')
+const engIndicator = document.querySelector('#eng')
+const espIndicator = document.querySelector('#esp')
 
 if (localStorage.getItem('LANGUAGE')) {     
-    balllang.classList.add('ball-move')         
+    balllang.classList.add('ball-move')      
+    espIndicator.classList.remove('langOn')       
     eng.forEach(element => {            
             element.classList.add('displayOn')          
                            })       
@@ -15,6 +18,7 @@ if (localStorage.getItem('LANGUAGE')) {
             element.classList.add('displayOff')                       
     }) 
 } else { 
+    engIndicator.classList.remove('langOn')  
 balllang.classList.remove('ball-move')    
 eng.forEach(element => {        
   element.classList.add('displayOff')       
@@ -24,16 +28,14 @@ esp.forEach(element => {
     }) 
 }
 
-
-
-
-
 //cambiar  lenguage
 
 export function cambiarLenguage(idioma) {    
 
 console.log('click');
-if (localStorage.getItem('LANGUAGE')) {    
+if (localStorage.getItem('LANGUAGE')) {  
+    espIndicator.classList.add('langOn')
+    engIndicator.classList.remove('langOn')      
     balllang.classList.remove('ball-move')    
     localStorage.removeItem('LANGUAGE', true)
     eng.forEach(element => {
@@ -50,6 +52,8 @@ if (localStorage.getItem('LANGUAGE')) {
         }  
     })   
 } else {
+    engIndicator.classList.add('langOn') 
+    espIndicator.classList.remove('langOn')  
     balllang.classList.add('ball-move')
     localStorage.setItem('LANGUAGE', true)
     eng.forEach(element => {

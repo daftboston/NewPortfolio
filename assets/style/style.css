@@ -99,7 +99,7 @@ body.clearTheme{
     align-items: center;
 }
 
-.engOn{
+.langOn{
     color: var(--buttom--pricipal);
     font-weight: 600;
 }
@@ -111,10 +111,7 @@ body.clearTheme{
 }
 
 
-.espOn{
-    color: var(--buttom--pricipal);
-    font-weight: 600;
-}
+
 
 
 
