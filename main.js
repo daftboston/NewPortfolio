@@ -1,3 +1,19 @@
+import './darkmode.js'
+import {cambiarLenguage} from './language.js'
+
+
+const language = document.querySelector('.language')
+
+
+  
+//EVENTLISTER
+eventListeners()
+
+function eventListeners(params) {
+    language.addEventListener('click',cambiarLenguage ) 
+}
+
+ 
 
 // rastreador para movimiento  en interseccion 
 
@@ -37,7 +53,6 @@ const observer2 = new IntersectionObserver((entries)=>{
             // evalua si los href son identicos, añade la clase 
             if( href === id  ) {
                link.classList.add("link--active")
-
             }else{
                 link.classList.remove("link--active")
             }        
@@ -45,15 +60,10 @@ const observer2 = new IntersectionObserver((entries)=>{
          })
         }
     })
-
 })
 
 // secciona al grupo de elementos de las secciones y lo pasa a uno al observer 2
 sectionElement.forEach((element)=>observer2.observe(element))
-
-
-
-
 
 
 // MenuShow
@@ -68,31 +78,12 @@ iconShowMenu.addEventListener('click', ()=>{
     navBarMenu.classList.toggle("nav-menu-show")
 })
 
-links.forEach((link)=>{link.addEventListener('click', ()=>{
+links.forEach(link=>{link.addEventListener('click', ()=>{
     navBarMenu.classList.toggle("nav-menu-show")
 })})
 
 
-
-
-
-//DarkMode
-
-const onOffSwitch= document.querySelector(".onOffSwitch")
-
-const moon = document.querySelector(".bxs-moon")
-const sun = document.querySelector(".bxs-sun")
-
-
-onOffSwitch.addEventListener("click", ()=>{
-    document.body.classList.toggle("clearTheme"),
-    moon.classList.toggle("moonOn"),
-    sun.classList.toggle("sunOn")
-
-})
-
-
-
+//Language 
 
 
 
