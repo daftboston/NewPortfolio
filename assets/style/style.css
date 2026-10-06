@@ -225,6 +225,7 @@ label,
 
 .hero .eyebrow,
 .hero .hero-role,
+.hero .hero-sub,
 .hero h1,
 .hero .ghost {
     color: #f0f0fa;
@@ -257,8 +258,8 @@ label,
 
 .hero h1,
 .display,
-.contact h2,
-.mission h2 {
+.contact .contact-title,
+.mission .mission-title {
     font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
     font-weight: 700;
     text-transform: uppercase;
@@ -276,13 +277,20 @@ label,
 }
 
 .hero-role {
-    margin: 0 0 1.6rem;
+    margin: 0 0 0.55rem;
     color: var(--ink);
     font-size: clamp(1.25rem, 2.2vw, 1.85rem);
     font-weight: 600;
     letter-spacing: 0.06em;
     line-height: 1.15;
     text-wrap: balance;
+}
+
+.hero-sub {
+    margin: 0 0 1.6rem;
+    font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+    line-height: 1.4;
+    opacity: 0.82;
 }
 
 .ghost {
@@ -347,6 +355,10 @@ button.ghost:hover {
     color: var(--ink);
     font-size: 1.02rem;
     letter-spacing: 0.12em;
+}
+
+.stack + .stack {
+    margin-top: -0.35rem;
 }
 
 .text-links {
@@ -425,6 +437,10 @@ html:not(.dark) .projects::before {
     text-decoration: none;
 }
 
+.mission-shot picture {
+    display: contents;
+}
+
 .mission-shot img {
     width: min(880px, 100%);
     height: auto;
@@ -481,6 +497,25 @@ a.mission-shot:hover img {
         0 0 46px rgba(255, 236, 214, 0.32);
 }
 
+.note-icon {
+    width: 52px;
+    height: auto;
+    margin-bottom: 0.9rem;
+    color: rgba(240, 240, 250, 0.72);
+}
+
+.note-status {
+    margin: 1.1rem 0 0;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(240, 240, 250, 0.35);
+    border-radius: 999px;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.85rem;
+    color: rgba(240, 240, 250, 0.78);
+}
+
 .note-title::after {
     content: "";
     display: block;
@@ -494,12 +529,12 @@ a.mission-shot:hover img {
     padding: 1.15rem 2.25rem 4.25rem;
 }
 
-.mission h2 {
+.mission .mission-title {
     margin: 0 0 0.45rem;
     font-size: clamp(2.4rem, 5vw, 4.2rem);
 }
 
-.mission h2 a {
+.mission-title a {
     color: inherit;
     text-decoration: none;
 }
@@ -514,7 +549,7 @@ a.mission-shot:hover img {
     margin-top: 0.85rem;
 }
 
-.contact h2 {
+.contact .contact-title {
     max-width: 12ch;
     margin: 0 0 0.85rem;
     font-size: clamp(3rem, 7vw, 5.6rem);
@@ -523,6 +558,48 @@ a.mission-shot:hover img {
 .section-lead {
     color: var(--muted);
     margin-bottom: 0;
+}
+
+.section-lead a {
+    color: var(--ink);
+    text-underline-offset: 0.2em;
+}
+
+.experience {
+    padding: 5.5rem 0 1.5rem;
+    scroll-margin-top: 5rem;
+}
+
+.xp-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem 2.25rem;
+    margin: 0;
+    padding: 0 2.25rem;
+    list-style: none;
+}
+
+.xp-item {
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+}
+
+.xp-item p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 34rem;
+}
+
+.xp-org {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
 }
 
 form {
@@ -585,13 +662,49 @@ html.is-sent[lang="en"] .form-thanks.eng {
 }
 
 footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-top: 3rem;
     padding: 2.5rem 2.25rem 2.2rem;
+    border-top: 1px solid var(--line);
 }
 
 footer p {
     margin: 0;
     color: var(--muted);
     font-size: 0.95rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.95rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.05rem;
+}
+
+.footer-links a:hover {
+    border-bottom-color: var(--ink);
+}
+
+.footer-links .footer-email {
+    text-transform: none;
+    letter-spacing: 0.04em;
 }
 
 .seccion {
@@ -696,6 +809,20 @@ html.dark[lang="en"] .when-dark.eng {
         flex-direction: column;
     }
 
+    .experience {
+        padding-top: 4.5rem;
+    }
+
+    .xp-list {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+        padding: 0 1rem;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
     footer {
         padding-left: 1rem;
         padding-right: 1rem;
@@ -776,7 +903,7 @@ html.is-intro .intro {
 }
 
 .intro.is-exit .door {
-    transition: transform 1s cubic-bezier(0.76, 0, 0.18, 1) 0.22s;
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.18, 1) 0.1s;
 }
 
 .intro.is-exit .door-a {
@@ -789,7 +916,7 @@ html.is-intro .intro {
 
 .intro.is-exit {
     background: transparent;
-    transition: background-color 0.7s ease;
+    transition: background-color 0.5s ease;
 }
 
 .intro.is-exit .sky,
@@ -797,7 +924,7 @@ html.is-intro .intro {
 .intro.is-exit::before,
 .intro.is-exit::after {
     opacity: 0;
-    transition: opacity 0.45s ease;
+    transition: opacity 0.35s ease;
 }
 
 .intro.is-exit {
@@ -896,7 +1023,7 @@ html.is-intro .intro {
 }
 
 .count.is-on {
-    animation: count-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: count-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .intro.is-title .count {
@@ -928,18 +1055,17 @@ html.is-intro .intro {
     z-index: 3;
     left: 0;
     right: 0;
-    top: 50%;
-    height: 0;
+    top: 0;
+    height: 100%;
     overflow: hidden;
     background: transparent;
+    /* Open with clip-path (compositor-only) instead of animating top/height, which caused layout shift (CLS). */
+    clip-path: inset(50% 0 50% 0);
 }
 
 .intro.is-title .slit {
-    top: 0;
-    height: 100%;
-    transition:
-        height 0.35s cubic-bezier(0.76, 0, 0.18, 1),
-        top 0.35s cubic-bezier(0.76, 0, 0.18, 1);
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 0.35s cubic-bezier(0.76, 0, 0.18, 1);
 }
 
 .slit::before {
@@ -957,7 +1083,7 @@ html.is-intro .intro {
 }
 
 .intro.is-title .slit::before {
-    animation: bloom 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    animation: bloom 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
 }
 
 .slit-inner {
@@ -1002,15 +1128,15 @@ html.is-intro .intro {
 .intro.is-title .intro-role {
     opacity: 1;
     transform: none;
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .intro.is-title .intro-kicker {
-    transition-delay: 0.35s;
+    transition-delay: 0.2s;
 }
 
 .intro.is-title .intro-role {
-    transition-delay: 0.55s;
+    transition-delay: 0.35s;
 }
 
 .intro-name {
@@ -1029,17 +1155,17 @@ html.is-intro .intro {
 .intro-name .line span {
     display: inline-block;
     opacity: 0;
-    transform: translate3d(var(--dx, 0vw), -74vh, 0);
-    filter: blur(12px);
+    transform: translate3d(calc(var(--dx, 0vw) * 0.2), -16vh, 0);
+    filter: blur(10px);
 }
 
 .intro.is-title .intro-name .line span {
-    animation: fall-through 1.85s cubic-bezier(0.65, 0, 0.2, 1) forwards;
-    animation-delay: calc(0.5s + var(--i) * 0.07s);
+    animation: fall-through 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(0.05s + var(--i) * 0.035s);
 }
 
 .intro.is-title .intro-name .line:nth-child(2) span {
-    animation-delay: calc(0.72s + var(--i) * 0.055s);
+    animation-delay: calc(0.15s + var(--i) * 0.03s);
 }
 
 .intro-skip {
@@ -1059,7 +1185,7 @@ html.is-intro .intro {
     font-weight: 500;
     cursor: pointer;
     opacity: 0;
-    animation: intro-fade 0.5s ease 0.8s forwards;
+    animation: intro-fade 0.4s ease 0.15s forwards;
 }
 
 .intro-skip:hover {
@@ -1073,22 +1199,11 @@ html.is-intro .intro {
 @keyframes fall-through {
     0% {
         opacity: 0;
-        transform: translate3d(var(--dx, 0vw), -74vh, 0) scale(1.15);
-        filter: blur(16px);
+        transform: translate3d(calc(var(--dx, 0vw) * 0.2), -16vh, 0) scaleY(1.25);
+        filter: blur(10px);
     }
-    18% {
+    45% {
         opacity: 1;
-        filter: blur(0);
-    }
-    46% {
-        transform: translate3d(calc(var(--dx, 0vw) * 0.45), -14vh, 0) scaleX(0.7) scaleY(1.35);
-    }
-    58% {
-        transform: translate3d(calc(var(--dx, 0vw) * 0.08), 0, 0) scaleX(0.16) scaleY(2.7);
-        filter: blur(0.7px) brightness(1.7);
-    }
-    72% {
-        transform: translate3d(0, 0, 0) scaleX(0.62) scaleY(1.28);
         filter: blur(0);
     }
     100% {
@@ -1150,6 +1265,10 @@ html.played-intro.is-ready .hero-copy h1 {
 
 html.played-intro.is-ready .hero-copy .hero-role {
     animation-delay: 0.3s;
+}
+
+html.played-intro.is-ready .hero-copy .hero-sub {
+    animation-delay: 0.38s;
 }
 
 html.played-intro.is-ready .hero-copy .ghost {

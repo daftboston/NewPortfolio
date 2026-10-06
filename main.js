@@ -43,7 +43,7 @@ function initSectionSpy() {
 
     const visible = new Set()
     const mark = () => {
-        const current = [...sections].find((section) => visible.has(section))
+        const current = [...sections].filter((section) => visible.has(section)).pop()
         links.forEach((link) => {
             const on = current && link.getAttribute('href') === '#' + current.id
             link.classList.toggle('link--active', on)
@@ -70,7 +70,7 @@ function initMotion() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     document.documentElement.classList.add('js')
     const nodes = document.querySelectorAll(
-        '.statement .lockup, .statement-body, .section-label, .mission, .contact > .rule, .contact > .eyebrow, .contact > h2, .contact > .section-lead, .contact form'
+        '.statement .lockup, .statement-body, .section-label, .xp-item, .mission, .contact > .rule, .contact > .eyebrow, .contact > h2, .contact > h3, .contact > .section-lead, .contact form'
     )
     if (!nodes.length) return
     nodes.forEach((node) => node.classList.add('reveal'))

@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Daniel Santoyo — Desarrollador web</title>
-    <meta name="description" content="Daniel Santoyo, desarrollador web. Interfaces con React y JavaScript, y un mercado de iPhones usados. / Web developer portfolio.">
+    <title>Daniel Santoyo — Desarrollador Full-Stack y Arquitecto</title>
+    <meta name="description" content="Daniel Santoyo — full-stack developer (React, Next.js, React Native) and architect with ~7 years in BIM &amp; Revit, based in Bogotá, Colombia.">
+    <link rel="canonical" href="https://portfoliodanielsantoyo.netlify.app/">
+    <meta name="theme-color" content="#000000">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Daniel Santoyo">
+    <meta property="og:url" content="https://portfoliodanielsantoyo.netlify.app/">
+    <meta property="og:title" content="Daniel Santoyo — Full-Stack Developer &amp; Architect">
+    <meta property="og:description" content="Full-stack developer (React, Next.js, React Native) and architect with ~7 years in BIM &amp; Revit, based in Bogotá, Colombia.">
+    <meta property="og:image" content="https://portfoliodanielsantoyo.netlify.app/assets/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Daniel Santoyo — Full-Stack Developer · React · Next.js · React Native. Architect with ~7 years in BIM &amp; Revit.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="es_CO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Daniel Santoyo — Full-Stack Developer &amp; Architect">
+    <meta name="twitter:description" content="Full-stack developer (React, Next.js, React Native) and architect with ~7 years in BIM &amp; Revit, based in Bogotá, Colombia.">
+    <meta name="twitter:image" content="https://portfoliodanielsantoyo.netlify.app/assets/images/og-image.jpg">
     <link rel="icon" href="./assets/images/face-solid-24.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,10 +45,10 @@
             if (params.get('theme') === 'light') document.documentElement.classList.remove('dark')
             if (params.get('sent') === 'true') document.documentElement.classList.add('is-sent')
             document.title = document.documentElement.lang === 'en'
-                ? 'Daniel Santoyo — Web developer'
-                : 'Daniel Santoyo — Desarrollador web'
+                ? 'Daniel Santoyo — Full-Stack Developer & Architect'
+                : 'Daniel Santoyo — Desarrollador Full-Stack y Arquitecto'
             var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-            var introSeen = sessionStorage.getItem('portfolio-intro') === '1'
+            var introSeen = localStorage.getItem('portfolio-intro-seen') === '1'
             var forceIntro = params.get('intro') === 'again'
             var deepLink = (location.hash && location.hash.length > 1) || params.get('sent') === 'true'
             if (!reduceMotion && (forceIntro || (!introSeen && !deepLink))) {
@@ -49,13 +66,13 @@
                     var el = document.querySelector(sel)
                     if (el) el.removeAttribute('aria-hidden')
                 })
-            }, 12000)
+            }, 3500)
         } catch (err) {}
     </script>
 </head>
 <body>
-    <a class="skip esp" href="#profile">Saltar al contenido</a>
-    <a class="skip eng" href="#profile">Skip to content</a>
+    <a class="skip esp" href="#about">Saltar al contenido</a>
+    <a class="skip eng" href="#about">Skip to content</a>
 
     <div class="intro" id="intro">
         <canvas class="sky" data-sky="intro" aria-hidden="true"></canvas>
@@ -68,19 +85,18 @@
             <span class="mark mark-br" aria-hidden="true"></span>
             <div class="intro-top" aria-hidden="true">
                 <span>Santoyo</span>
-                <span class="intro-clock" data-clock>T−00:02.4</span>
+                <span class="intro-clock" data-clock>T−00:01.0</span>
             </div>
             <p class="count" data-count aria-hidden="true"><span class="glyph-lens">3</span></p>
             <div class="slit" aria-hidden="true">
                 <div class="slit-inner">
-                    <p class="intro-kicker esp">Desde 2023</p>
-                    <p class="intro-kicker eng">Since 2023</p>
+                    <p class="intro-kicker">Bogotá, Colombia</p>
                     <p class="intro-name" aria-hidden="true">
                         <span class="line"><span style="--i:0;--dx:-16vw">D</span><span style="--i:1;--dx:-9vw">a</span><span style="--i:2;--dx:-3vw">n</span><span style="--i:3;--dx:3vw">i</span><span style="--i:4;--dx:9vw">e</span><span style="--i:5;--dx:16vw">l</span></span>
                         <span class="line"><span style="--i:0;--dx:-18vw">S</span><span style="--i:1;--dx:-12vw">a</span><span style="--i:2;--dx:-6vw">n</span><span style="--i:3;--dx:0vw">t</span><span style="--i:4;--dx:6vw">o</span><span style="--i:5;--dx:12vw">y</span><span style="--i:6;--dx:18vw">o</span></span>
                     </p>
-                    <p class="intro-role esp">Desarrollador web × React</p>
-                    <p class="intro-role eng">Web developer × React</p>
+                    <p class="intro-role esp">Desarrollador Full-Stack&nbsp;· React&nbsp;· Next.js&nbsp;· React&nbsp;Native</p>
+                    <p class="intro-role eng">Full-Stack Developer&nbsp;· React&nbsp;· Next.js&nbsp;· React&nbsp;Native</p>
                 </div>
             </div>
             <button class="intro-skip" type="button">
@@ -100,12 +116,16 @@
             <nav data-label-es="Secciones" data-label-en="Sections" aria-label="Secciones">
                 <ul id="nav-menu" class="nav-links">
                     <li>
-                        <a class="esp" href="#tecnologies">Acerca</a>
-                        <a class="eng" href="#tecnologies">About</a>
+                        <a class="esp" href="#about">Acerca</a>
+                        <a class="eng" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="esp" href="#proyects">Proyectos</a>
-                        <a class="eng" href="#proyects">Projects</a>
+                        <a class="esp" href="#experience">Experiencia</a>
+                        <a class="eng" href="#experience">Experience</a>
+                    </li>
+                    <li>
+                        <a class="esp" href="#projects">Proyectos</a>
+                        <a class="eng" href="#projects">Projects</a>
                     </li>
                     <li>
                         <a class="esp" href="#contact">Contacto</a>
@@ -135,12 +155,13 @@
             <div class="leak" aria-hidden="true"></div>
             <div class="hero-copy">
                 <span class="rule" aria-hidden="true"></span>
-                <p class="eyebrow esp">Desde 2023</p>
-                <p class="eyebrow eng">Since 2023</p>
+                <p class="eyebrow">Bogotá, Colombia</p>
                 <h1>Daniel Santoyo</h1>
-                <p class="hero-role esp">Desarrollador web × React</p>
-                <p class="hero-role eng">Web developer × React</p>
-                <a class="ghost" href="#proyects">
+                <p class="hero-role esp">Desarrollador Full-Stack&nbsp;· React&nbsp;· Next.js&nbsp;· React&nbsp;Native</p>
+                <p class="hero-role eng">Full-Stack Developer&nbsp;· React&nbsp;· Next.js&nbsp;· React&nbsp;Native</p>
+                <p class="hero-sub esp">Arquitecto con ~7 años en BIM y Revit</p>
+                <p class="hero-sub eng">Architect with ~7 years in BIM &amp; Revit</p>
+                <a class="ghost" href="#projects">
                     <span class="esp">Proyectos</span>
                     <span class="eng">Projects</span>
                     →
@@ -149,79 +170,118 @@
             </div>
         </section>
 
-        <section id="tecnologies" class="seccion statement">
+        <section id="about" class="seccion statement">
             <div class="lockup">
                 <span class="rule" aria-hidden="true"></span>
-                <p class="eyebrow esp">Acerca</p>
-                <p class="eyebrow eng">About</p>
-                <p class="display esp">Interfaces que se entienden y se pueden usar.</p>
-                <p class="display eng">Interfaces that are clear, and that someone can use.</p>
+                <h2 class="eyebrow esp">Acerca</h2>
+                <h2 class="eyebrow eng">About</h2>
+                <p class="display esp">Interfaces claras y fáciles de usar.</p>
+                <p class="display eng">Interfaces that are clear and easy to use.</p>
             </div>
             <div class="statement-body">
-                <img class="portrait" src="./assets/images/selfiedsp.png" width="113" height="138" alt="Daniel Santoyo">
+                <img class="portrait" src="./assets/images/selfiedsp.png" width="113" height="138" loading="lazy" decoding="async" alt="Daniel Santoyo">
                 <div>
-                    <p class="esp">Desde 2023 armo productos propios. Ahora trabajo en una tienda independiente de piezas para Model 3 y Model Y, y en Atlas, una app de iPhone para aprender un idioma hablando. Antes hice un mercado de iPhones usados, apps con APIs, una tienda con carrito y formularios.</p>
-                    <p class="eng">Since 2023 I have been building my own products. Right now I am working on an independent parts shop for Model 3 and Model Y, and on Atlas, an iPhone app for learning a language by speaking. Before that I built a marketplace for used iPhones, API-driven apps, a shop with a cart, and product forms.</p>
-                    <p class="stack">JavaScript · TypeScript · React · React Native · Next.js · Node.js · CSS</p>
+                    <p class="esp">Soy Daniel Santoyo, desarrollador full-stack y arquitecto en Bogotá, Colombia. Diseño y lanzo productos web y móviles de punta a punta, desde el modelo de datos, la autenticación y los pagos hasta la interfaz y el CI. Entre mis proyectos recientes están TruePhone, un marketplace con Next.js + Supabase y pagos con Wompi, y una app iOS con Expo / React Native. Antes del código, pasé ~7 años diseñando y coordinando proyectos de edificación con Revit y BIM, así que trabajo de forma estructurada, con estándares claros y coordinación entre disciplinas.</p>
+                    <p class="eng">I'm Daniel Santoyo, a full-stack developer and architect based in Bogotá, Colombia. I design and ship web and mobile products end to end, from data model, auth and payments to UI and CI. Recent work includes TruePhone, a Next.js + Supabase marketplace with Wompi payments, and an Expo / React Native iOS app. Before code, I spent ~7 years designing and coordinating building projects with Revit and BIM, so I bring a structured, standards-driven way of working and I'm used to coordinating across disciplines.</p>
+                    <p class="stack">JavaScript · TypeScript · React · React Native · Next.js · Node.js · Supabase · CSS</p>
+                    <p class="stack stack-aec">Revit · Navisworks · BIM</p>
                     <p class="text-links">
-                        <a href="./assets/documents/HOJA DE VIDA.pdf" download="Daniel-Santoyo-CV.pdf">
-                            <span class="esp">Currículum</span>
-                            <span class="eng">Résumé</span>
+                        <a class="esp" href="./Daniel_Santoyo_FullStack_CV_ES.pdf" download>Hoja de vida (PDF)</a>
+                        <a class="eng" href="./Daniel_Santoyo_FullStack_Resume_EN.pdf" download>Résumé (PDF)</a>
+                        <a href="https://www.linkedin.com/in/danielsantoyodev" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://github.com/daftboston" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://danielsantoyoarq.netlify.app/" target="_blank" rel="noopener noreferrer">
+                            <span class="esp">Portafolio de arquitectura</span>
+                            <span class="eng">Architecture portfolio</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/daniel-santoyo-599b82149/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="proyects" class="seccion projects">
+        <section id="experience" class="seccion experience">
             <div class="section-label">
                 <span class="rule" aria-hidden="true"></span>
-                <p class="eyebrow esp">Proyectos</p>
-                <p class="eyebrow eng">Projects</p>
+                <h2 class="eyebrow esp">Experiencia</h2>
+                <h2 class="eyebrow eng">Experience</h2>
+            </div>
+            <ul class="xp-list">
+                <li class="xp-item">
+                    <p class="esp"><strong class="xp-org">Marval Constructora (2024–):</strong> creé un bot de IA que agiliza la búsqueda de información de proyectos; adopté protocolos de diseño BIM que redujeron ~10% los tiempos de diseño.</p>
+                    <p class="eng"><strong class="xp-org">Marval Constructora (2024–):</strong> built an AI bot that speeds up searching project information; adopted BIM design protocols that cut design time by ~10% from concept to delivery.</p>
+                </li>
+                <li class="xp-item">
+                    <p class="esp"><strong class="xp-org">Construcciones Crear (2021–2024):</strong> lideré la adopción de BIM en una empresa tradicionalmente no BIM, con protocolos que estandarizaron el modelado y su calidad.</p>
+                    <p class="eng"><strong class="xp-org">Construcciones Crear (2021–2024):</strong> led BIM adoption in a traditionally non-BIM company, writing the workflow protocols that standardized Revit/Navisworks modeling and model quality.</p>
+                </li>
+                <li class="xp-item">
+                    <p class="esp"><strong class="xp-org">Asistente de IA en WhatsApp (2025):</strong> bot con Node/Express y webhooks que responde sobre proyectos de vivienda y agenda citas con function calling.</p>
+                    <p class="eng"><strong class="xp-org">WhatsApp AI assistant (2025):</strong> Node/Express webhook bot that answers questions about housing projects and books appointments with LLM function calling.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="projects" class="seccion projects">
+            <div class="section-label">
+                <span class="rule" aria-hidden="true"></span>
+                <h2 class="eyebrow esp">Proyectos</h2>
+                <h2 class="eyebrow eng">Projects</h2>
             </div>
             <div class="missions">
                 <article class="mission mission-lead">
                     <div class="mission-shot">
-                        <img src="./assets/images/tesla-partes.jpg" width="1280" height="800" alt="Tesla Partes CO, piezas señaladas sobre un Model 3">
+                        <picture>
+                            <source type="image/webp" srcset="./assets/images/tesla-partes-640.webp 640w, ./assets/images/tesla-partes-1280.webp 1280w" sizes="(max-width: 760px) calc(100vw - 2rem), 960px">
+                            <img src="./assets/images/tesla-partes-1200.jpg" width="1280" height="800" loading="lazy" decoding="async" alt="Tesla Partes CO: piezas señaladas sobre un Model 3" data-alt-es="Tesla Partes CO: piezas señaladas sobre un Model 3" data-alt-en="Tesla Partes CO: parts highlighted on a Model 3">
+                        </picture>
                     </div>
                     <div class="mission-meta">
                         <p class="eyebrow">Next.js · TypeScript · <span class="esp">En curso</span><span class="eng">In progress</span></p>
-                        <h2>Tesla Partes CO</h2>
-                        <p class="esp">Tienda independiente de piezas para Model 3 y Model Y en Colombia. Eliges el modelo, tocas el auto y armas el carrito en el navegador.</p>
-                        <p class="eng">An independent shop for Model 3 and Model Y parts in Colombia. You pick the model, tap the car, and build a cart in the browser.</p>
+                        <h3 class="mission-title">Tesla Partes CO</h3>
+                        <p class="esp">Tienda independiente de piezas para Tesla Model 3 y Model Y en Colombia. Eliges el modelo, tocas el auto y armas el carrito en el navegador.</p>
+                        <p class="eng">An independent shop for Tesla Model 3 and Model Y parts in Colombia. You pick the model, tap the car, and build a cart in the browser.</p>
                     </div>
                 </article>
 
                 <article class="mission mission-lead">
                     <div class="mission-shot mission-note">
-                        <p class="note-kicker">iPhone</p>
+                        <svg class="note-icon" viewBox="0 0 64 96" width="64" height="96" aria-hidden="true" focusable="false">
+                            <rect x="2" y="2" width="60" height="92" rx="12" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <rect x="24" y="8" width="16" height="4" rx="2" fill="currentColor" opacity="0.6"/>
+                            <path d="M20 40h24a5 5 0 0 1 5 5v9a5 5 0 0 1-5 5H30l-7 6v-6h-3a5 5 0 0 1-5-5v-9a5 5 0 0 1 5-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M24 49.5h2M30 46v7M34 44v11M38 47v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <p class="note-kicker">iPhone · Expo</p>
                         <p class="note-title">Atlas</p>
+                        <p class="note-status"><span class="esp">En desarrollo</span><span class="eng">In development</span></p>
                     </div>
                     <div class="mission-meta">
                         <p class="eyebrow">Expo · React Native · <span class="esp">En curso</span><span class="eng">In progress</span></p>
-                        <h2>Atlas</h2>
-                        <p class="esp">App para aprender un idioma hablando. La primera versión está en curso: elegir un idioma, terminar una lección corta y guardar la palabra.</p>
-                        <p class="eng">An app for learning a language by speaking. The first version is in progress: pick a language, finish a short lesson, and keep the word.</p>
+                        <h3 class="mission-title">Atlas</h3>
+                        <p class="esp">App para aprender un idioma hablando. La primera versión está en curso: elegir un idioma, terminar una lección corta y guardar palabras nuevas.</p>
+                        <p class="eng">An app for learning a language by speaking. The first version is in progress: pick a language, finish a short lesson, and save new words.</p>
                     </div>
                 </article>
             </div>
 
             <div class="section-label section-earlier">
                 <span class="rule" aria-hidden="true"></span>
-                <p class="eyebrow esp">Antes</p>
-                <p class="eyebrow eng">Earlier</p>
+                <h3 class="eyebrow esp">Antes</h3>
+                <h3 class="eyebrow eng">Earlier</h3>
             </div>
 
             <div class="missions">
                 <article class="mission mission-wide">
-                    <a class="mission-shot" href="https://true-phone.vercel.app" target="_blank" rel="noopener noreferrer">
-                        <img src="./assets/images/truephone.jpg" alt="TruePhone, inicio del mercado de iPhones usados">
+                    <a class="mission-shot" href="https://true-phone.vercel.app" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                        <picture>
+                            <source type="image/webp" srcset="./assets/images/truephone-640.webp 640w, ./assets/images/truephone-1280.webp 1280w" sizes="(max-width: 760px) calc(100vw - 2rem), 880px">
+                            <img src="./assets/images/truephone-1200.jpg" width="1280" height="680" loading="lazy" decoding="async" alt="TruePhone: página de inicio del marketplace de iPhones usados" data-alt-es="TruePhone: página de inicio del marketplace de iPhones usados" data-alt-en="TruePhone: home page of the used-iPhone marketplace">
+                        </picture>
                     </a>
                     <div class="mission-meta">
-                        <p class="eyebrow">Next.js · TypeScript</p>
-                        <h2><a href="https://true-phone.vercel.app" target="_blank" rel="noopener noreferrer">TruePhone</a></h2>
-                        <p class="esp">Mercado para comprar y vender iPhones usados en Colombia.</p>
+                        <p class="eyebrow">Next.js · TypeScript · Supabase</p>
+                        <h4 class="mission-title"><a href="https://true-phone.vercel.app" target="_blank" rel="noopener noreferrer">TruePhone</a></h4>
+                        <p class="esp">Marketplace para comprar y vender iPhones usados en Colombia.</p>
                         <p class="eng">A marketplace for buying and selling used iPhones in Colombia.</p>
                         <p class="text-links">
                             <a href="https://true-phone.vercel.app" target="_blank" rel="noopener noreferrer"><span class="esp">Sitio</span><span class="eng">Site</span> →</a>
@@ -231,12 +291,20 @@
                 </article>
 
                 <article class="mission">
-                    <a class="mission-shot" href="https://dsp-ecommercereact.netlify.app/" target="_blank" rel="noopener noreferrer">
-                        <img src="./assets/images/ecomerce.jpg" alt="Ecommerce de productos electrónicos">
+                    <a class="mission-shot" href="https://dsp-ecommercereact.netlify.app/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                        <picture>
+                            <source type="image/webp" srcset="./assets/images/ecommerce-640.webp 640w, ./assets/images/ecommerce-1200.webp 1200w, ./assets/images/ecommerce-1493.webp 1493w" sizes="(max-width: 760px) calc(100vw - 2rem), 880px">
+                            <img src="./assets/images/ecommerce-1200.jpg" width="1493" height="870" loading="lazy" decoding="async" alt="Tienda e-commerce de productos electrónicos" data-alt-es="Tienda e-commerce de productos electrónicos" data-alt-en="E-commerce store for electronics">
+                        </picture>
                     </a>
                     <div class="mission-meta">
                         <p class="eyebrow">React</p>
-                        <h2><a href="https://dsp-ecommercereact.netlify.app/" target="_blank" rel="noopener noreferrer">Ecommerce</a></h2>
+                        <h4 class="mission-title">
+                            <a href="https://dsp-ecommercereact.netlify.app/" target="_blank" rel="noopener noreferrer">
+                                <span class="esp">Tienda e-commerce</span>
+                                <span class="eng">E-commerce store</span>
+                            </a>
+                        </h4>
                         <p class="esp">Tienda con inicio de sesión, carrito y detalle.</p>
                         <p class="eng">Shop with sign-in, a cart, and product detail.</p>
                         <p class="text-links">
@@ -247,12 +315,15 @@
                 </article>
 
                 <article class="mission">
-                    <a class="mission-shot" href="https://dsp-rickandmorty.netlify.app/" target="_blank" rel="noopener noreferrer">
-                        <img src="./assets/images/rick.jpg" alt="Personajes de Rick and Morty">
+                    <a class="mission-shot" href="https://dsp-rickandmorty.netlify.app/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                        <picture>
+                            <source type="image/webp" srcset="./assets/images/rick-640.webp 640w, ./assets/images/rick-1200.webp 1200w, ./assets/images/rick-1760.webp 1760w" sizes="(max-width: 760px) calc(100vw - 2rem), 880px">
+                            <img src="./assets/images/rick-1200.jpg" width="1813" height="850" loading="lazy" decoding="async" alt="Personajes de Rick and Morty" data-alt-es="Personajes de Rick and Morty" data-alt-en="Rick and Morty characters">
+                        </picture>
                     </a>
                     <div class="mission-meta">
                         <p class="eyebrow">React</p>
-                        <h2><a href="https://dsp-rickandmorty.netlify.app/" target="_blank" rel="noopener noreferrer">Rick and Morty</a></h2>
+                        <h4 class="mission-title"><a href="https://dsp-rickandmorty.netlify.app/" target="_blank" rel="noopener noreferrer">Rick and Morty</a></h4>
                         <p class="esp">Filtra personajes según su universo.</p>
                         <p class="eng">Filter characters by universe.</p>
                         <p class="text-links">
@@ -263,17 +334,20 @@
                 </article>
 
                 <article class="mission">
-                    <a class="mission-shot" href="https://dashboarddsp.netlify.app/" target="_blank" rel="noopener noreferrer">
-                        <img src="./assets/images/Dashboard.JPG" alt="Tablero de métricas de redes">
+                    <a class="mission-shot" href="https://dashboarddsp.netlify.app/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                        <picture>
+                            <source type="image/webp" srcset="./assets/images/dashboard-640.webp 640w, ./assets/images/dashboard-986.webp 986w" sizes="(max-width: 760px) calc(100vw - 2rem), 880px">
+                            <img src="./assets/images/dashboard-986.jpg" width="986" height="598" loading="lazy" decoding="async" alt="Tablero de métricas de redes sociales" data-alt-es="Tablero de métricas de redes sociales" data-alt-en="Social media metrics dashboard">
+                        </picture>
                     </a>
                     <div class="mission-meta">
                         <p class="eyebrow">JavaScript</p>
-                        <h2>
+                        <h4 class="mission-title">
                             <a href="https://dashboarddsp.netlify.app/" target="_blank" rel="noopener noreferrer">
                                 <span class="esp">Tablero social</span>
                                 <span class="eng">Social dashboard</span>
                             </a>
-                        </h2>
+                        </h4>
                         <p class="esp">Datos de redes leídos desde un JSON.</p>
                         <p class="eng">Social metrics loaded from a JSON file.</p>
                         <p class="text-links">
@@ -284,12 +358,20 @@
                 </article>
 
                 <article class="mission">
-                    <a class="mission-shot" href="https://fortunecookiereact.netlify.app" target="_blank" rel="noopener noreferrer">
-                        <img src="./assets/images/cookie.jpg" alt="Galleta de la fortuna">
+                    <a class="mission-shot" href="https://fortunecookiereact.netlify.app" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                        <picture>
+                            <source type="image/webp" srcset="./assets/images/cookie-640.webp 640w, ./assets/images/cookie-1200.webp 1200w, ./assets/images/cookie-1760.webp 1760w" sizes="(max-width: 760px) calc(100vw - 2rem), 880px">
+                            <img src="./assets/images/cookie-1200.jpg" width="1865" height="874" loading="lazy" decoding="async" alt="Galleta de la fortuna" data-alt-es="Galleta de la fortuna" data-alt-en="Fortune cookie">
+                        </picture>
                     </a>
                     <div class="mission-meta">
                         <p class="eyebrow">React</p>
-                        <h2><a href="https://fortunecookiereact.netlify.app" target="_blank" rel="noopener noreferrer">Cookie Fortune</a></h2>
+                        <h4 class="mission-title">
+                            <a href="https://fortunecookiereact.netlify.app" target="_blank" rel="noopener noreferrer">
+                                <span class="esp">Galleta de la fortuna</span>
+                                <span class="eng">Fortune Cookie</span>
+                            </a>
+                        </h4>
                         <p class="esp">Una galleta de la fortuna al azar.</p>
                         <p class="eng">A random fortune cookie.</p>
                         <p class="text-links">
@@ -300,17 +382,20 @@
                 </article>
 
                 <article class="mission">
-                    <a class="mission-shot" href="https://majestic-alpaca-ee1405.netlify.app/" target="_blank" rel="noopener noreferrer">
-                        <img src="./assets/images/todo.jpg" alt="Formulario para crear y editar productos">
+                    <a class="mission-shot" href="https://majestic-alpaca-ee1405.netlify.app/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                        <picture>
+                            <source type="image/webp" srcset="./assets/images/product-form-640.webp 640w, ./assets/images/product-form-1073.webp 1073w" sizes="(max-width: 760px) calc(100vw - 2rem), 880px">
+                            <img src="./assets/images/product-form-1073.jpg" width="1073" height="489" loading="lazy" decoding="async" alt="Formulario para crear y editar productos" data-alt-es="Formulario para crear y editar productos" data-alt-en="Form for creating and editing products">
+                        </picture>
                     </a>
                     <div class="mission-meta">
                         <p class="eyebrow">React</p>
-                        <h2>
+                        <h4 class="mission-title">
                             <a href="https://majestic-alpaca-ee1405.netlify.app/" target="_blank" rel="noopener noreferrer">
                                 <span class="esp">Formulario</span>
                                 <span class="eng">Product form</span>
                             </a>
-                        </h2>
+                        </h4>
                         <p class="esp">Agrega productos y edítalos.</p>
                         <p class="eng">Add products and edit them.</p>
                         <p class="text-links">
@@ -324,18 +409,18 @@
 
         <section id="contact" class="seccion contact">
             <span class="rule" aria-hidden="true"></span>
-            <p class="eyebrow esp">Contacto</p>
-            <p class="eyebrow eng">Contact</p>
-            <h2 class="esp">Cuéntame del proyecto.</h2>
-            <h2 class="eng">Tell me about the project.</h2>
-            <p class="section-lead esp">Te respondo por correo.</p>
-            <p class="section-lead eng">I’ll reply by email.</p>
+            <h2 class="eyebrow esp">Contacto</h2>
+            <h2 class="eyebrow eng">Contact</h2>
+            <h3 class="contact-title esp">Cuéntame sobre tu proyecto.</h3>
+            <h3 class="contact-title eng">Tell me about the project.</h3>
+            <p class="section-lead esp">Te respondo por correo. También puedes escribirme a <a href="mailto:dsantoyop@gmail.com">dsantoyop@gmail.com</a>.</p>
+            <p class="section-lead eng">I’ll reply by email. You can also write to me at <a href="mailto:dsantoyop@gmail.com">dsantoyop@gmail.com</a>.</p>
             <p class="form-thanks esp" role="status">Gracias. Tu mensaje fue enviado.</p>
             <p class="form-thanks eng" role="status">Thanks. Your message was sent.</p>
             <form name="contact" method="POST" action="/?sent=true#contact" data-netlify="true" netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="contact">
                 <p class="hp">
-                    <label>No llenar si eres humano: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                    <label>No llenar si eres humano: <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
                 </p>
                 <label>
                     <span class="esp">Nombre</span>
@@ -362,7 +447,18 @@
     </main>
 
     <footer>
-        <p>Daniel Santoyo</p>
+        <p class="footer-name">Daniel Santoyo</p>
+        <ul class="footer-links">
+            <li><a class="footer-email" href="mailto:dsantoyop@gmail.com">dsantoyop@gmail.com</a></li>
+            <li><a href="https://github.com/daftboston" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/danielsantoyodev" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li>
+                <a href="https://danielsantoyoarq.netlify.app/" target="_blank" rel="noopener noreferrer">
+                    <span class="esp">Portafolio de arquitectura</span>
+                    <span class="eng">Architecture portfolio</span>
+                </a>
+            </li>
+        </ul>
     </footer>
 
     <script type="module" src="./main.js"></script>

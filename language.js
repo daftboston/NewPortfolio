@@ -1,8 +1,8 @@
 import { syncThemeButton } from './darkmode.js'
 
 const titles = {
-    es: 'Daniel Santoyo — Desarrollador web',
-    en: 'Daniel Santoyo — Web developer',
+    es: 'Daniel Santoyo — Desarrollador Full-Stack y Arquitecto',
+    en: 'Daniel Santoyo — Full-Stack Developer & Architect',
 }
 
 export function initLanguage() {
@@ -18,6 +18,10 @@ export function initLanguage() {
         if (nav) {
             nav.setAttribute('aria-label', nav.getAttribute(lang === 'en' ? 'data-label-en' : 'data-label-es'))
         }
+        document.querySelectorAll('img[data-alt-en]').forEach((img) => {
+            const alt = img.getAttribute(lang === 'en' ? 'data-alt-en' : 'data-alt-es')
+            if (alt) img.setAttribute('alt', alt)
+        })
         syncThemeButton()
         if (!persist) return
         try {
