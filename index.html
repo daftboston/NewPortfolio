@@ -1,314 +1,370 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Daniel Santoyo — Desarrollador web</title>
+    <meta name="description" content="Daniel Santoyo, desarrollador web. Interfaces con React y JavaScript, y un mercado de iPhones usados. / Web developer portfolio.">
     <link rel="icon" href="./assets/images/face-solid-24.png">
-    <title>Daniel Santoyo</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
-<script defer src="./main.js" type="module"></script>
-<script src="https://unpkg.com/lenis@1.0.45-dev.0/dist/lenis.min.js"></script> 
+    <script>
+        try {
+            var storedLang = localStorage.getItem('portfolio-lang')
+            var legacyEn = localStorage.getItem('LANGUAGE')
+            if (storedLang === 'en' || (storedLang !== 'es' && legacyEn)) {
+                document.documentElement.lang = 'en'
+            }
+            var theme = localStorage.getItem('THEME')
+            if (theme === 'light') document.documentElement.classList.remove('dark')
+            else document.documentElement.classList.add('dark')
+            var params = new URLSearchParams(location.search)
+            if (params.get('lang') === 'en' || params.get('lang') === 'es') {
+                document.documentElement.lang = params.get('lang')
+            }
+            if (params.get('theme') === 'dark') document.documentElement.classList.add('dark')
+            if (params.get('theme') === 'light') document.documentElement.classList.remove('dark')
+            if (params.get('sent') === 'true') document.documentElement.classList.add('is-sent')
+            document.title = document.documentElement.lang === 'en'
+                ? 'Daniel Santoyo — Web developer'
+                : 'Daniel Santoyo — Desarrollador web'
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            var introSeen = sessionStorage.getItem('portfolio-intro') === '1'
+            var forceIntro = params.get('intro') === 'again'
+            var deepLink = (location.hash && location.hash.length > 1) || params.get('sent') === 'true'
+            if (!reduceMotion && (forceIntro || (!introSeen && !deepLink))) {
+                document.documentElement.classList.add('is-intro')
+            } else if (!reduceMotion) {
+                document.documentElement.classList.add('is-quiet')
+            }
+            setTimeout(function () {
+                if (!document.documentElement.classList.contains('is-intro')) return
+                document.documentElement.classList.remove('is-intro')
+                document.documentElement.classList.add('is-ready')
+                var intro = document.getElementById('intro')
+                if (intro) intro.remove()
+                ;['header', 'main', 'footer'].forEach(function (sel) {
+                    var el = document.querySelector(sel)
+                    if (el) el.removeAttribute('aria-hidden')
+                })
+            }, 12000)
+        } catch (err) {}
+    </script>
 </head>
+<body>
+    <a class="skip esp" href="#profile">Saltar al contenido</a>
+    <a class="skip eng" href="#profile">Skip to content</a>
 
-    <nav class="nav-bar">
-        <i class='iconShowMenu bx bx-menu'></i>
-        <h3 class="name ">Daniel Santoyo - Full Stack</h3>       
-         
-        <ul class="nav-menu">
-            <li class="link">
-                <a class="nav-text esp" href="#profile">Acerca de mi</a>
-                <a class="nav-text eng" href="#profile">About me</a>
-            </li>
-            <li class="link">
-                <a class="nav-text esp " href="#tecnologies">Tecnologias</a>      
-                <a class="nav-text eng" href="#tecnologies">Technologies</a>            
-            </li>
-            <li class="link">
-                <a class="nav-text esp" href="#proyects">Proyectos </a>
-                <a class="nav-text eng" href="#proyects">Proyects </a>
-            </li>        
-            <li class="link">
-                <a class="nav-text esp" href="#contact">Contactame</a>    
-                <a class="nav-text eng" href="#contact">Contact</a>              
-            </li> 
-        </ul>
-    </nav>
-
-    <body class="clearTheme">
-    
-    <div class="darkmodeContainer">
-        
-        <div class="switchDark">
-            <i class='bx bxs-sun'></i>
-            <div class="switch dmode">                
-                <div class="ball"></div>                
+    <div class="intro" id="intro">
+        <canvas class="sky" data-sky="intro" aria-hidden="true"></canvas>
+        <div class="door door-a" aria-hidden="true"></div>
+        <div class="door door-b" aria-hidden="true"></div>
+        <div class="intro-ui">
+            <span class="mark mark-tl" aria-hidden="true"></span>
+            <span class="mark mark-tr" aria-hidden="true"></span>
+            <span class="mark mark-bl" aria-hidden="true"></span>
+            <span class="mark mark-br" aria-hidden="true"></span>
+            <div class="intro-top" aria-hidden="true">
+                <span>Santoyo</span>
+                <span class="intro-clock" data-clock>T−00:02.4</span>
             </div>
-            <i class='bx bxs-moon'></i>
+            <p class="count" data-count aria-hidden="true"><span class="glyph-lens">3</span></p>
+            <div class="slit" aria-hidden="true">
+                <div class="slit-inner">
+                    <p class="intro-kicker esp">Desde 2023</p>
+                    <p class="intro-kicker eng">Since 2023</p>
+                    <p class="intro-name" aria-hidden="true">
+                        <span class="line"><span style="--i:0;--dx:-16vw">D</span><span style="--i:1;--dx:-9vw">a</span><span style="--i:2;--dx:-3vw">n</span><span style="--i:3;--dx:3vw">i</span><span style="--i:4;--dx:9vw">e</span><span style="--i:5;--dx:16vw">l</span></span>
+                        <span class="line"><span style="--i:0;--dx:-18vw">S</span><span style="--i:1;--dx:-12vw">a</span><span style="--i:2;--dx:-6vw">n</span><span style="--i:3;--dx:0vw">t</span><span style="--i:4;--dx:6vw">o</span><span style="--i:5;--dx:12vw">y</span><span style="--i:6;--dx:18vw">o</span></span>
+                    </p>
+                    <p class="intro-role esp">Desarrollador web × React</p>
+                    <p class="intro-role eng">Web developer × React</p>
+                </div>
+            </div>
+            <button class="intro-skip" type="button">
+                <span class="esp">Saltar</span>
+                <span class="eng">Skip</span>
+            </button>
         </div>
-       
-
-        <div class="switchLanguage">        
-            <div class="langOn" id = 'esp'>Esp</div>  
-            <label class="switch language">
-                <div class="ball ball-lang "></div>
-            </label>
-            <div class="langOn" id="eng">Eng</div>                    
-        </div>       
     </div>
-    
 
-
-       
-        
-       
-        
-      
-<main class="container_principal">
-    <header>        
-            <aside id="profile" class="profile seccion">
-                <div class="container-img">
-                    <img class="profile-img" src="./assets/images/selfiedsp.png" alt="">
-                </div>                
-                
-                <div class="profile_description">   
-                     <dt class="profile-name">
-                    Daniel Santoyo
-                     </dt>            
-               
-                    <dd class="description  esp">
-                    Soy <span>Desarrollador</span> de proyectos para <span >Frontend</span> and <span > Backend, </span>  desde su conceptualización hasta su construcción.
-                    </dd>
-
-                    <dd class="description eng">
-                        I am <span>a developer </span> for <span >Frontend</span>  y  <span > Backend </span> proyects,  from the concept to construction. 
-                        </dd>
-
-                    <div class="button_hv" >
-                        <a class="btn_rsm" href="./assets/documents/HOJA DE VIDA.pdf" download="CV DANIEL SANTOYO"> <i class='bx bxs-user-pin'></i><span class="resume_button">Resume</span></a>
-                        <a class="btn_linkedin" href="https://www.linkedin.com/in/daniel-santoyo-599b82149/" target="_blank"><i class='bx bxl-linkedin'></i><span class="resume_button"></span></a>
-                    </div>         
-                </div>              
-            </aside> 
-
-            <article id="tecnologies" class="tecnologies seccion">
-                <img src="./assets/images/jslogo.png" alt="">
-                <img src="./assets/images/logo1.png" alt="">
-                <img src="./assets/images/logo2.png" alt="">
-                <img src="./assets/images/logo3.png" alt="">
-            </article>
-          
-         
-   </header>
-
-
-        <section id="experience" class="experience seccion">
-
-            
-         <article class="container_experience">
-            
-            <div class="title esp">
-                <dt >Experiencia <span class="icon"><i class='bx bxs-briefcase-alt-2'></i></span>  </dt>
-            </div>      
-            <div class="title eng">
-                <dt >Experience <span class="icon"><i class='bx bxs-briefcase-alt-2'></i></span>  </dt>
-            </div>     
-        
-                <article class="description-experience">
-                    <dd class="subtitle-experience"> Front-End Developer</dd>
-                    <dd>jul 2023-</dd>
-                    <br>
-                    <ul class="list-experience">
-                        <li>Consumo de API- Rick and Morty con React</li>
-                        <dd>Desarrollo de app con el uso de una api que muestra personajes según su
-                            universo.</dd>
-                        <li>Maquetacion y creacion de Ecommerce con React</li>
-                        <dd>
-                            Creacion de un Ecommerce de artículos tecnológicos, con carrito de compras
-            y creación de usuarios.
-                        </dd>
-                        <li>Weather App con React</li>
-                        <dd>Creación de una aplicación  que muestra el clima según la ubicación del
-                            usuario, consumiendo la API de Weather App.</dd>
-                        <li>Creacion de Pagina web para Constructora</li>
-                        <dd>Esta cuenta con multiples secciones, animaciones y formulario de contacto.</dd>
-                    </ul>
-             </article>
-
-         </article>
-        
-    </section>
-           
-       
-    <section id="proyects" class="proyects seccion">
-        <div class="title esp">
-            <dt >Proyectos <span class="icon"> <i class='bx bx-star' ></i> </span>  </dt>
+    <header class="site-nav">
+        <div class="nav-inner">
+            <a class="brand" href="#profile">Santoyo</a>
+            <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-menu">
+                <span class="esp">Menú</span>
+                <span class="eng">Menu</span>
+            </button>
+            <nav data-label-es="Secciones" data-label-en="Sections" aria-label="Secciones">
+                <ul id="nav-menu" class="nav-links">
+                    <li>
+                        <a class="esp" href="#tecnologies">Acerca</a>
+                        <a class="eng" href="#tecnologies">About</a>
+                    </li>
+                    <li>
+                        <a class="esp" href="#proyects">Proyectos</a>
+                        <a class="eng" href="#proyects">Projects</a>
+                    </li>
+                    <li>
+                        <a class="esp" href="#contact">Contacto</a>
+                        <a class="eng" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="controls">
+                <button id="theme" type="button" aria-pressed="true" aria-label="Activar tema claro">
+                    <span class="when-light esp">Oscuro</span>
+                    <span class="when-light eng">Dark</span>
+                    <span class="when-dark esp">Claro</span>
+                    <span class="when-dark eng">Light</span>
+                </button>
+                <button id="lang" type="button">
+                    <span class="esp">EN</span>
+                    <span class="eng">ES</span>
+                </button>
+            </div>
         </div>
-        <div class="title eng">
-            <dt >Proyects <span class="icon"> <i class='bx bx-star' ></i> </span>  </dt>
-        </div>
-        <article class="container_proyects">
+    </header>
 
-        
-       
-        
-            <section id="proyects" class="container-cards"> 
-
-                <article class="card one hidden">
-                    <article >
-                           <img class="img-proy" src="./assets/images/cookie.jpg" alt="">           
-                            <dt class="title-proy">Cookie Fortune</dt>                                        
-                     </article>          
-        
-                     <article class="superior-card">
-                        <dt> Cookie Fourtune</dt>
-                        <dd class="desc-proy">Creacion de aplicacion para generar galletas aleatorias de la fortuna con react</dd> 
-                        
-                        <div class="buttons">
-                            <button class="site"> <a href="https://fortunecookiereact.netlify.app" target="_blank"><i class='bx bx-home-alt-2' ></i>Site</a>
-                                
-                            </button>
-                
-                            <button class="git">
-                                <a href="https://github.com/daftboston/React-p1" target="_blank"> <i class='bx bx-link' ></i> gitHub</a>
-                            </button>
-                        </div>               
-                     </article>
-                </article>           
-               
-        
-                
-                <article class="card two hidden">
-                    <article>
-                        <img class="img-proy" src="./assets/images/rick.jpg" alt="">           
-                        <dt class="title-proy"> Rick and Morthy-Characters</dt>                  
-                    </article>
-                    
-                    <article class="superior-card">
-                        <dt> Rick and Morthy-Characters</dt>
-                        <dd class="desc-proy">Creacion de aplicacion para filtrar personajes según su universo</dd> 
-                        
-                        <div class="buttons">
-                            <button class="site"> <a href="https://dsp-rickandmorty.netlify.app/" target="_blank"><i class='bx bx-home-alt-2' ></i>Site</a>
-                                
-                            </button>
-                
-                            <button class="git">
-                                <a href="https://github.com/daftboston/p3-r" target="_blank"> <i class='bx bx-link' ></i> gitHub</a>
-                            </button>
-                        </div>               
-                     </article>
-               </article>
-        
-                <article class="card three hidden">
-                    <article>
-                         <img class="img-proy" src="./assets/images/todo.jpg" alt="">           
-                         <dt class="title-proy"> Product Form</dt>
-                    </article>
-                    <article class="superior-card">
-                        <dt> Product Form</dt>
-                        <dd class="desc-proy">Creacion de aplicacion para adicionar productos  y editarlos.</dd> 
-                        
-                        <div class="buttons">
-                            <button class="site"> <a href="https://majestic-alpaca-ee1405.netlify.app/" target="_blank"><i class='bx bx-home-alt-2' ></i>Site</a>
-                                
-                            </button>
-                
-                            <button class="git">
-                                <a href="https://github.com/daftboston/P4-CRUD" target="_blank"> <i class='bx bx-link' ></i> gitHub</a>
-                            </button>
-                        </div>               
-                     </article>        
-                </article>
-        
-                <article class="card four hidden">
-                    <article>
-                        <img class="img-proy" src="./assets/images/ecomerce.jpg" alt="">           
-                        <dt class="title-proy">Ecommerce</dt>                        
-                    </article>
-
-                    <article class="superior-card">
-                        <dt> Ecommerce</dt>
-                        <dd class="desc-proy">Creacion de ecommerce de productos electronicos con seccion de Login, Carrito de compras y detalle de productos.</dd> 
-                        
-                        <div class="buttons">
-                            <button class="site"> <a href="https://dsp-ecommercereact.netlify.app/" target="_blank"><i class='bx bx-home-alt-2' ></i>Site</a>
-                                
-                            </button>
-                
-                            <button class="git">
-                                <a href="https://github.com/daftboston/e-comerce" target="_blank"> <i class='bx bx-link' ></i> gitHub</a>
-                            </button>
-                        </div>               
-                     </article>      
-                                   
-                 </article>
-
-                 <article class="card five hidden">
-                    <article>
-                        <img class="img-proy" src="./assets/images/Dashboard.JPG" alt="">           
-                        <dt class="title-proy">Dashboard Social Media</dt>                        
-                    </article>
-
-                    <article class="superior-card">
-                        <dt>Dashboard</dt>
-                        <dd class="desc-proy">Creacion de tablero dinamico para visualizar datos consumidos desde un json</dd> 
-                        
-                        <div class="buttons">
-                            <button class="site"> <a href="https://dashboarddsp.netlify.app/" target="_blank"><i class='bx bx-home-alt-2' ></i>Site</a>
-                                
-                            </button>
-                
-                            <button class="git">
-                                <a href="https://github.com/daftboston/dashBoardChallenge" target="_blank"> <i class='bx bx-link' ></i> gitHub</a>
-                            </button>
-                        </div>               
-                     </article>                                     
-                 </article>
-            </section>
-
-        </article>
-
-    </section>    
-        
-       
-                
-      
-        
-        <section id="socials seccion">
-    
+    <main>
+        <section id="profile" class="seccion hero">
+            <div class="hero-pin">
+            <canvas class="sky" data-sky="hero" aria-hidden="true"></canvas>
+            <div class="leak" aria-hidden="true"></div>
+            <div class="hero-copy">
+                <span class="rule" aria-hidden="true"></span>
+                <p class="eyebrow esp">Desde 2023</p>
+                <p class="eyebrow eng">Since 2023</p>
+                <h1>Daniel Santoyo</h1>
+                <p class="hero-role esp">Desarrollador web × React</p>
+                <p class="hero-role eng">Web developer × React</p>
+                <a class="ghost" href="#proyects">
+                    <span class="esp">Proyectos</span>
+                    <span class="eng">Projects</span>
+                    →
+                </a>
+            </div>
+            </div>
         </section>
-    
-       
-    
-        <section id="contact" class="form seccion">
-            <dt class="title esp"> Contactame </dt>
-            <dt class="title eng"> Contact </dt>
 
-            <form  class="form_container esp" data-netlify="true" >
-                <input class="esp" type="text" placeholder="Ingresa tu nombre" name="nameUser" id="nameUser" required>
-                <input class="esp type="email" placeholder="Ingresa tu correo" name="emailUser" id="emailUser" required>
-                <textarea class="esp name="commentUser" id="commentUser" placeholder="Escribeme" cols="30" rows="10"></textarea>
-                <button  class="btn-form esp" type="submit">Enviar</button>
+        <section id="tecnologies" class="seccion statement">
+            <div class="lockup">
+                <span class="rule" aria-hidden="true"></span>
+                <p class="eyebrow esp">Acerca</p>
+                <p class="eyebrow eng">About</p>
+                <p class="display esp">Interfaces que se entienden y se pueden usar.</p>
+                <p class="display eng">Interfaces that are clear, and that someone can use.</p>
+            </div>
+            <div class="statement-body">
+                <img class="portrait" src="./assets/images/selfiedsp.png" width="113" height="138" alt="Daniel Santoyo">
+                <div>
+                    <p class="esp">Desde 2023 armo productos propios. Ahora trabajo en una tienda independiente de piezas para Model 3 y Model Y, y en Atlas, una app de iPhone para aprender un idioma hablando. Antes hice un mercado de iPhones usados, apps con APIs, una tienda con carrito y formularios.</p>
+                    <p class="eng">Since 2023 I have been building my own products. Right now I am working on an independent parts shop for Model 3 and Model Y, and on Atlas, an iPhone app for learning a language by speaking. Before that I built a marketplace for used iPhones, API-driven apps, a shop with a cart, and product forms.</p>
+                    <p class="stack">JavaScript · TypeScript · React · React Native · Next.js · Node.js · CSS</p>
+                    <p class="text-links">
+                        <a href="./assets/documents/HOJA DE VIDA.pdf" download="Daniel-Santoyo-CV.pdf">
+                            <span class="esp">Currículum</span>
+                            <span class="eng">Résumé</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/daniel-santoyo-599b82149/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyects" class="seccion projects">
+            <div class="section-label">
+                <span class="rule" aria-hidden="true"></span>
+                <p class="eyebrow esp">Proyectos</p>
+                <p class="eyebrow eng">Projects</p>
+            </div>
+            <div class="missions">
+                <article class="mission mission-lead">
+                    <div class="mission-shot">
+                        <img src="./assets/images/tesla-partes.jpg" width="1280" height="800" alt="Tesla Partes CO, piezas señaladas sobre un Model 3">
+                    </div>
+                    <div class="mission-meta">
+                        <p class="eyebrow">Next.js · TypeScript · <span class="esp">En curso</span><span class="eng">In progress</span></p>
+                        <h2>Tesla Partes CO</h2>
+                        <p class="esp">Tienda independiente de piezas para Model 3 y Model Y en Colombia. Eliges el modelo, tocas el auto y armas el carrito en el navegador.</p>
+                        <p class="eng">An independent shop for Model 3 and Model Y parts in Colombia. You pick the model, tap the car, and build a cart in the browser.</p>
+                    </div>
+                </article>
+
+                <article class="mission mission-lead">
+                    <div class="mission-shot mission-note">
+                        <p class="note-kicker">iPhone</p>
+                        <p class="note-title">Atlas</p>
+                    </div>
+                    <div class="mission-meta">
+                        <p class="eyebrow">Expo · React Native · <span class="esp">En curso</span><span class="eng">In progress</span></p>
+                        <h2>Atlas</h2>
+                        <p class="esp">App para aprender un idioma hablando. La primera versión está en curso: elegir un idioma, terminar una lección corta y guardar la palabra.</p>
+                        <p class="eng">An app for learning a language by speaking. The first version is in progress: pick a language, finish a short lesson, and keep the word.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="section-label section-earlier">
+                <span class="rule" aria-hidden="true"></span>
+                <p class="eyebrow esp">Antes</p>
+                <p class="eyebrow eng">Earlier</p>
+            </div>
+
+            <div class="missions">
+                <article class="mission mission-wide">
+                    <a class="mission-shot" href="https://true-phone.vercel.app" target="_blank" rel="noopener noreferrer">
+                        <img src="./assets/images/truephone.jpg" alt="TruePhone, inicio del mercado de iPhones usados">
+                    </a>
+                    <div class="mission-meta">
+                        <p class="eyebrow">Next.js · TypeScript</p>
+                        <h2><a href="https://true-phone.vercel.app" target="_blank" rel="noopener noreferrer">TruePhone</a></h2>
+                        <p class="esp">Mercado para comprar y vender iPhones usados en Colombia.</p>
+                        <p class="eng">A marketplace for buying and selling used iPhones in Colombia.</p>
+                        <p class="text-links">
+                            <a href="https://true-phone.vercel.app" target="_blank" rel="noopener noreferrer"><span class="esp">Sitio</span><span class="eng">Site</span> →</a>
+                            <a href="https://github.com/daftboston/truePhone" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="mission">
+                    <a class="mission-shot" href="https://dsp-ecommercereact.netlify.app/" target="_blank" rel="noopener noreferrer">
+                        <img src="./assets/images/ecomerce.jpg" alt="Ecommerce de productos electrónicos">
+                    </a>
+                    <div class="mission-meta">
+                        <p class="eyebrow">React</p>
+                        <h2><a href="https://dsp-ecommercereact.netlify.app/" target="_blank" rel="noopener noreferrer">Ecommerce</a></h2>
+                        <p class="esp">Tienda con inicio de sesión, carrito y detalle.</p>
+                        <p class="eng">Shop with sign-in, a cart, and product detail.</p>
+                        <p class="text-links">
+                            <a href="https://dsp-ecommercereact.netlify.app/" target="_blank" rel="noopener noreferrer"><span class="esp">Sitio</span><span class="eng">Site</span> →</a>
+                            <a href="https://github.com/daftboston/e-comerce" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="mission">
+                    <a class="mission-shot" href="https://dsp-rickandmorty.netlify.app/" target="_blank" rel="noopener noreferrer">
+                        <img src="./assets/images/rick.jpg" alt="Personajes de Rick and Morty">
+                    </a>
+                    <div class="mission-meta">
+                        <p class="eyebrow">React</p>
+                        <h2><a href="https://dsp-rickandmorty.netlify.app/" target="_blank" rel="noopener noreferrer">Rick and Morty</a></h2>
+                        <p class="esp">Filtra personajes según su universo.</p>
+                        <p class="eng">Filter characters by universe.</p>
+                        <p class="text-links">
+                            <a href="https://dsp-rickandmorty.netlify.app/" target="_blank" rel="noopener noreferrer"><span class="esp">Sitio</span><span class="eng">Site</span> →</a>
+                            <a href="https://github.com/daftboston/p3-r" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="mission">
+                    <a class="mission-shot" href="https://dashboarddsp.netlify.app/" target="_blank" rel="noopener noreferrer">
+                        <img src="./assets/images/Dashboard.JPG" alt="Tablero de métricas de redes">
+                    </a>
+                    <div class="mission-meta">
+                        <p class="eyebrow">JavaScript</p>
+                        <h2>
+                            <a href="https://dashboarddsp.netlify.app/" target="_blank" rel="noopener noreferrer">
+                                <span class="esp">Tablero social</span>
+                                <span class="eng">Social dashboard</span>
+                            </a>
+                        </h2>
+                        <p class="esp">Datos de redes leídos desde un JSON.</p>
+                        <p class="eng">Social metrics loaded from a JSON file.</p>
+                        <p class="text-links">
+                            <a href="https://dashboarddsp.netlify.app/" target="_blank" rel="noopener noreferrer"><span class="esp">Sitio</span><span class="eng">Site</span> →</a>
+                            <a href="https://github.com/daftboston/dashBoardChallenge" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="mission">
+                    <a class="mission-shot" href="https://fortunecookiereact.netlify.app" target="_blank" rel="noopener noreferrer">
+                        <img src="./assets/images/cookie.jpg" alt="Galleta de la fortuna">
+                    </a>
+                    <div class="mission-meta">
+                        <p class="eyebrow">React</p>
+                        <h2><a href="https://fortunecookiereact.netlify.app" target="_blank" rel="noopener noreferrer">Cookie Fortune</a></h2>
+                        <p class="esp">Una galleta de la fortuna al azar.</p>
+                        <p class="eng">A random fortune cookie.</p>
+                        <p class="text-links">
+                            <a href="https://fortunecookiereact.netlify.app" target="_blank" rel="noopener noreferrer"><span class="esp">Sitio</span><span class="eng">Site</span> →</a>
+                            <a href="https://github.com/daftboston/React-p1" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="mission">
+                    <a class="mission-shot" href="https://majestic-alpaca-ee1405.netlify.app/" target="_blank" rel="noopener noreferrer">
+                        <img src="./assets/images/todo.jpg" alt="Formulario para crear y editar productos">
+                    </a>
+                    <div class="mission-meta">
+                        <p class="eyebrow">React</p>
+                        <h2>
+                            <a href="https://majestic-alpaca-ee1405.netlify.app/" target="_blank" rel="noopener noreferrer">
+                                <span class="esp">Formulario</span>
+                                <span class="eng">Product form</span>
+                            </a>
+                        </h2>
+                        <p class="esp">Agrega productos y edítalos.</p>
+                        <p class="eng">Add products and edit them.</p>
+                        <p class="text-links">
+                            <a href="https://majestic-alpaca-ee1405.netlify.app/" target="_blank" rel="noopener noreferrer"><span class="esp">Sitio</span><span class="eng">Site</span> →</a>
+                            <a href="https://github.com/daftboston/P4-CRUD" target="_blank" rel="noopener noreferrer">GitHub →</a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="seccion contact">
+            <span class="rule" aria-hidden="true"></span>
+            <p class="eyebrow esp">Contacto</p>
+            <p class="eyebrow eng">Contact</p>
+            <h2 class="esp">Cuéntame del proyecto.</h2>
+            <h2 class="eng">Tell me about the project.</h2>
+            <p class="section-lead esp">Te respondo por correo.</p>
+            <p class="section-lead eng">I’ll reply by email.</p>
+            <p class="form-thanks esp" role="status">Gracias. Tu mensaje fue enviado.</p>
+            <p class="form-thanks eng" role="status">Thanks. Your message was sent.</p>
+            <form name="contact" method="POST" action="/?sent=true#contact" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact">
+                <p class="hp">
+                    <label>No llenar si eres humano: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                </p>
+                <label>
+                    <span class="esp">Nombre</span>
+                    <span class="eng">Name</span>
+                    <input type="text" name="name" autocomplete="name" required>
+                </label>
+                <label>
+                    <span class="esp">Correo</span>
+                    <span class="eng">Email</span>
+                    <input type="email" name="email" autocomplete="email" required>
+                </label>
+                <label>
+                    <span class="esp">Mensaje</span>
+                    <span class="eng">Message</span>
+                    <textarea name="message" rows="4" required></textarea>
+                </label>
+                <button class="ghost" type="submit">
+                    <span class="esp">Enviar</span>
+                    <span class="eng">Send</span>
+                    →
+                </button>
             </form>
-
-            <form  class="form_container eng" data-netlify="true" >
-                <input class="eng" type="text" placeholder="Name" name="nameUser" id="nameUser" required>
-                <input class="eng"  type="email" placeholder="Email" name="emailUser" id="emailUser" required>
-                <textarea class="eng"  name="commentUser" id="commentUser" placeholder="Message" cols="30" rows="10"></textarea>
-                <button   class="btn-form eng" type="submit">Send</button>
-            </form>
-         
-
         </section>
     </main>
 
-    
-  
-    
+    <footer>
+        <p>Daniel Santoyo</p>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
 </body>
 </html>

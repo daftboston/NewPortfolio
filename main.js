@@ -1,118 +1,89 @@
-import './darkmode.js'
-import {cambiarLenguage} from './language.js'
+import { initTheme } from './darkmode.js'
+import { initLanguage } from './language.js'
+import { initIntro } from './intro.js'
+import { initSky } from './sky.js'
 
+initIntro()
+initSky()
+initTheme()
+initLanguage()
+initMenu()
+initSectionSpy()
+initMotion()
 
-//import Lenis from 'lenis'
+function initMenu() {
+    const button = document.querySelector('.menu-btn')
+    const list = document.querySelector('.nav-links')
+    if (!button || !list) return
 
-const lenis = new Lenis()
+    const close = () => {
+        list.classList.remove('is-open')
+        button.setAttribute('aria-expanded', 'false')
+    }
 
-lenis.on('scroll', (e) => {
-  console.log(e)
-})
-
-function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
-}
-
-requestAnimationFrame(raf)
-/*
-lenis.on('scroll', ScrollTrigger.update)
-
-gsap.ticker.add((time)=>{
-  lenis.raf(time * 1000)
-})
-
-gsap.ticker.lagSmoothing(0) /**/
-
-
-
-
-
-
-const language = document.querySelector('.language')
-
-
-  
-//EVENTLISTER
-eventListeners()
-
-function eventListeners(params) {
-    language.addEventListener('click',cambiarLenguage ) 
-}
-
- 
-
-// rastreador para movimiento  en interseccion 
-
-const hiddenElements = document.querySelectorAll(".hidden")
-
-const observer = new IntersectionObserver((entries) => {entries.forEach((entry)=>{
-    if(entry.isIntersecting) {        
-        entry.target.classList.add("show");       
-    }else{
-    entry.target.classList.remove("show")
-      }
-      //console.log(entries);
-})
-},{threshold: 0.2,})
-
-hiddenElements.forEach((element) => observer.observe(element))
-
-// rastreador para evaluar la posicion en el nav bar 
-// Rastreador de posicion.
-// selecciona la clase, cada seccion.
-const sectionElement = document.querySelectorAll(".seccion")
-//console.log(sectionElement);
-
-// selecciona cada link de la nav bar
-const links = document.querySelectorAll(".nav-text")
-console.log(links);
-
-
-const observer2 = new IntersectionObserver((entries)=>{
-    entries.forEach((entry)=>{
-        if(entry.isIntersecting) {
-         links.forEach((link)=>{
-            // selecciona cada uno de los href de la navbar.
-            const href = link.getAttribute("href").split("#")[1]
-            const id =  entry.target.id
-
-            // evalua si los href son identicos, añade la clase 
-            if( href === id  ) {
-               link.classList.add("link--active")
-            }else{
-                link.classList.remove("link--active")
-            }        
-           
-         })
-        }
+    button.addEventListener('click', () => {
+        const open = !list.classList.contains('is-open')
+        list.classList.toggle('is-open', open)
+        button.setAttribute('aria-expanded', String(open))
     })
-})
 
-// secciona al grupo de elementos de las secciones y lo pasa a uno al observer 2
-sectionElement.forEach((element)=>observer2.observe(element))
+    list.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', close)
+    })
 
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') close()
+    })
+}
 
-// MenuShow
+function initSectionSpy() {
+    const sections = document.querySelectorAll('.seccion')
+    const links = document.querySelectorAll('.nav-links a')
+    if (!sections.length || !links.length || !('IntersectionObserver' in window)) return
 
-//Selecciona la clase del icono menu y lo guarda en una variable
-const iconShowMenu = document.querySelector(".iconShowMenu")
+    const visible = new Set()
+    const mark = () => {
+        const current = [...sections].find((section) => visible.has(section))
+        links.forEach((link) => {
+            const on = current && link.getAttribute('href') === '#' + current.id
+            link.classList.toggle('link--active', on)
+            if (on) link.setAttribute('aria-current', 'true')
+            else link.removeAttribute('aria-current')
+        })
+    }
 
-const navBarMenu = document.querySelector(".nav-menu")
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) visible.add(entry.target)
+                else visible.delete(entry.target)
+            })
+            mark()
+        },
+        { rootMargin: '-72px 0px -70% 0px', threshold: 0 }
+    )
 
-//Escucha cuando le da click
-iconShowMenu.addEventListener('click', ()=>{
-    navBarMenu.classList.toggle("nav-menu-show")
-})
+    sections.forEach((section) => observer.observe(section))
+}
 
-links.forEach(link=>{link.addEventListener('click', ()=>{
-    navBarMenu.classList.toggle("nav-menu-show")
-})})
-
-
-//Language 
-
-
-
-
+function initMotion() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    document.documentElement.classList.add('js')
+    const nodes = document.querySelectorAll(
+        '.statement .lockup, .statement-body, .section-label, .mission, .contact > .rule, .contact > .eyebrow, .contact > h2, .contact > .section-lead, .contact form'
+    )
+    if (!nodes.length) return
+    nodes.forEach((node) => node.classList.add('reveal'))
+    if (!('IntersectionObserver' in window)) {
+        nodes.forEach((node) => node.classList.add('in'))
+        return
+    }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return
+            entry.target.classList.add('in')
+            observer.unobserve(entry.target)
+        })
+    }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' })
+    nodes.forEach((node) => observer.observe(node))
+}
